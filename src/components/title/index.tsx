@@ -1,5 +1,6 @@
+
 import Colors from '@/constants/color';
-import {typography} from '@/utils/fontUtil';
+import { typography } from '@/utils/fontUtil';
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 

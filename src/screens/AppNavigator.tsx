@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NAVIGATION_ROUTES} from '@/constants/screenName';
 import SplashScreen from './auth/splash';
 import SignIn from './auth/Signin';
+import Signup from './auth/Signup';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name={NAVIGATION_ROUTES.AUTH.SIGNIN}
         component={SignIn}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={NAVIGATION_ROUTES.AUTH.SIGNUP}
+        component={Signup}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

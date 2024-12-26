@@ -21,7 +21,7 @@ const SplashScreen = ({navigation}: GenericNavigationType) => {
   );
 
   const handleAnimationEnd = () => {
-    setTimeout(() => navigation.navigate(NAVIGATION_ROUTES.AUTH.SIGNIN), 4000);
+    setTimeout(() => navigation.navigate(NAVIGATION_ROUTES.AUTH.SIGNIN), 2000);
   };
 
   return (

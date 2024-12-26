@@ -23,6 +23,9 @@ import {Theme} from '@/theme';
 import CustomButton from '@/components/button';
 import {PASSWORD_REGEX, EMAIL_REGEX} from '@/helpers';
 import _ from 'lodash';
+import * as Animatable from 'react-native-animatable';
+import { IMAGES } from '@/assests/images';
+import { NAVIGATION_ROUTES } from '@/constants/screenName';
 
 export default function SignIn({navigation}: GenericNavigationType) {
   const [Email, setEmail] = React.useState<string>('');
@@ -40,35 +43,44 @@ export default function SignIn({navigation}: GenericNavigationType) {
 
   const isFieldValid = checkIsFieldValid();
 
+
+    const handleSignin = () => {
+      navigation.navigate(NAVIGATION_ROUTES.AUTH.SIGNUP)
+    };
+
   return (
     <Wrapper>
       <SafeAreaView style={styles.mainContainer}>
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <SafeAreaView style={styles.imageContainer}>
-            {/* <Animatable.Image
-                source={PngImages.ImageBgLogin}
-                style={styles.background}
-                resizeMode="cover"
-                animation="fadeIn"
-                duration={3000}
-              /> */}
+            <Animatable.Image
+              source={IMAGES.bg_logo}
+              style={styles.background}
+              resizeMode="cover"
+              animation="fadeIn"
+              duration={3000}
+            />
           </SafeAreaView>
           <CenterView>
             <FullView containerStyle={{gap: normalizeHeight(18)}}>
               <Title
-                title="Login Title"
+                title={'Log In To '}
                 titlestyle={styles.signInTitleText}
-                spanstyle={styles.companyLogoText}
-                spantext="Subtitle or Additional Text"
+                spanstyle={styles.signInTitleText}
+                spantext={'Your Account'}
               />
               <FullView containerStyle={{padding: 0}}>
                 <InputView>
                   <CustomInput
-                    placeholder={`${'login_input_field1'}`}
+                    placeholder={'Enter Valid Email'}
                     containerStyle={Theme.Input.primary}
                     onChange={setEmail}
                     secureTextEntry={false}
                     value={Email}
+                    validate={{
+                      regex: EMAIL_REGEX,
+                      errorMessage: 'Enter Valid Email',
+                    }}
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faEnvelope}
@@ -80,11 +92,15 @@ export default function SignIn({navigation}: GenericNavigationType) {
                 </InputView>
                 <InputView>
                   <CustomInput
-                    placeholder={`${'login_input_field2'}`}
+                    placeholder={'Enter Valid Password'}
                     containerStyle={Theme.Input.primary}
                     onChange={setPassword}
                     secureTextEntry={true}
                     value={Password}
+                    validate={{
+                      regex: PASSWORD_REGEX,
+                      errorMessage: 'Enter Password of 6 Length',
+                    }}
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faLock}
@@ -94,37 +110,28 @@ export default function SignIn({navigation}: GenericNavigationType) {
                     )}
                   />
                 </InputView>
-
-                <SafeAreaView
-                  style={{
-                    ...styles.forogotContainer,
-                    alignItems: 'center',
-                    marginTop: normalizeHeight(5),
-                  }}
-                />
               </FullView>
 
               <SafeAreaView style={styles.buttonContainer}>
-                <View>
-                  <CustomButton
-                    title={`${'login_button_text'}`}
-                    buttonstyle={Theme.Button.login_button}
-                    // onPress={() => handleSignin()}
-                    fontstyle={Theme.Title.login_button_title}
-                    // loading={isLoading}
-                    disabled={!isFieldValid}
-                  />
-                </View>
+                <CustomButton
+                  title={'Login'}
+                  buttonstyle={Theme.Button.login_button}
+                  onPress={() => handleSignin()}
+                  fontstyle={Theme.Title.login_button_title}
+                  // loading={isLoading}
+                  disabled={!isFieldValid}
+                />
               </SafeAreaView>
+              
 
               <View style={styles.bottomViewContainer}>
                 <Title
-                  title={`${'login_sub_text'}`}
+                  title={'Doesn’t have an account? '}
                   titlestyle={styles.registerRedirectionText}
                 />
-                <TouchableOpacity>
+                <TouchableOpacity onPress={handleSignin}>
                   <Title
-                    title={`${'login_sub_text1'}`}
+                    title={'Register now'}
                     titlestyle={styles.registerRedirectionTextBold}
                   />
                 </TouchableOpacity>
@@ -187,6 +194,10 @@ const styles = StyleSheet.create({
   },
   bottomViewContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '50%',
+    marginLeft: normalizeHeight(70),
   },
   bottomSheetView: {
     flex: 1,

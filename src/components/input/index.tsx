@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
     minHeight: normalizeHeight(60),
   },
   containerFocused: {
-    borderColor: Colors.black,
+    borderColor: Colors.white,
   },
   containerUnfocused: {
     borderColor: Colors.white,

@@ -1,3 +1,4 @@
+import Colors from '@/constants/color';
 import {FontType} from '@/utils/fontUtil';
 import {
   normalizeFont,
@@ -5,7 +6,6 @@ import {
   normalizeWidth,
   normalizeWithScale,
 } from '@/utils/styleUtil';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 export const Button = {
   skip_button: {
     fontSize: normalizeFont(18),

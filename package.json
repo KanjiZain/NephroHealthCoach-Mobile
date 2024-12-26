@@ -27,6 +27,7 @@
     "react-native": "0.76.5",
     "react-native-animatable": "^1.4.0",
     "react-native-dotenv": "^3.4.11",
+    "react-native-element-dropdown": "^2.12.2",
     "react-native-gesture-handler": "^2.21.2",
     "react-native-orientation-locker": "^1.7.0",
     "react-native-safe-area-context": "^5.0.0",

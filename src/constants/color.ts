@@ -1,6 +1,6 @@
 const Colors = {
   grey: '#808080',
-  white: '#ffff',
+  white: 'white',
   lightGrey: '#E5E8EB',
   lightWhite: '#F8F8F8',
   black: 'black',
@@ -13,7 +13,7 @@ const Colors = {
   light_weight_grey: '#ffffff60',
   warm_yellow: '#fdb125',
   dark_charcoal: '#333',
-  cosmos_blue: '#0a1b26',
+  cosmos_blue: '#2d3e50',
   flickering_gold: '#C4A668',
   extreme_yellow: '#fdb125',
   red: '#CD2550',
