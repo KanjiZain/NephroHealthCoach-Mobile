@@ -16,7 +16,7 @@
     "format-check": "prettier --config .prettierrc.js --check \"src/**/*{.jsx,.js,.tsx,.ts}\""
   },
   "dependencies": {
-     "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-native-fontawesome": "^0.3.2",
@@ -31,9 +31,9 @@
     "react-native-orientation-locker": "^1.7.0",
     "react-native-safe-area-context": "^5.0.0",
     "react-native-screens": "^4.4.0",
-    "react-native-toast-message": "^2.2.1",
-        "react-native-svg-transformer": "^1.5.0"
-
+    "react-native-svg": "^15.10.1",
+    "react-native-svg-transformer": "^1.5.0",
+    "react-native-toast-message": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
