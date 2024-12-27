@@ -44,6 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/x86/rnasyncstorage_autolinked_build/cmake_install.cmake")
   include("D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/x86/rngesturehandler_codegen_autolinked_build/cmake_install.cmake")
   include("D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/x86/safeareacontext_autolinked_build/cmake_install.cmake")
   include("D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/x86/rnscreens_autolinked_build/cmake_install.cmake")

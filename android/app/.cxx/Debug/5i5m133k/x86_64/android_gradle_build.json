@@ -1,5 +1,6 @@
 {
   "buildFiles": [
+    "D:\\NephroHealthCoach-Mobile\\node_modules\\@react-native-async-storage\\async-storage\\android\\build\\generated\\source\\codegen\\jni\\CMakeLists.txt",
     "D:\\NephroHealthCoach-Mobile\\node_modules\\react-native-gesture-handler\\android\\build\\generated\\source\\codegen\\jni\\CMakeLists.txt",
     "D:\\NephroHealthCoach-Mobile\\node_modules\\react-native-safe-area-context\\android\\src\\main\\jni\\CMakeLists.txt",
     "D:\\NephroHealthCoach-Mobile\\node_modules\\react-native-screens\\android\\src\\main\\jni\\CMakeLists.txt",
@@ -31,6 +32,11 @@
         "D:\\NephroHealthCoach-Mobile\\android\\app\\build\\intermediates\\cxx\\Debug\\5i5m133k\\obj\\x86_64\\libreact_codegen_rnscreens.so",
         "D:\\NephroHealthCoach-Mobile\\android\\app\\build\\intermediates\\cxx\\Debug\\5i5m133k\\obj\\x86_64\\libreact_codegen_rnsvg.so"
       ]
+    },
+    "react_codegen_rnasyncstorage::@1596841e19ec5b9eeffe": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "react_codegen_rnasyncstorage"
     },
     "react_codegen_rngesturehandler_codegen::@39f233abcd2c728bc6ec": {
       "toolchain": "toolchain",

@@ -1,6 +1,9 @@
 D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/CMakeFiles/appmodules.dir
 D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/CMakeFiles/edit_cache.dir
 D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/react_codegen_rnasyncstorage.dir
+D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/edit_cache.dir
+D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/rnasyncstorage_autolinked_build/CMakeFiles/rebuild_cache.dir
 D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir
 D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/edit_cache.dir
 D:/NephroHealthCoach-Mobile/android/app/.cxx/Debug/5i5m133k/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/rebuild_cache.dir

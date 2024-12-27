@@ -28,9 +28,11 @@ import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { GenderListWithLabel } from '@/constants';
 import Select from '@/components/shared/Selector';
 import Spacer from '@/components/shared';
+import { useDispatch } from 'react-redux';
+import { signUpAction } from '@/store/actions';
 
 export default function Signup({navigation}: GenericNavigationType) {
-  const [Email, setEmail] = React.useState<string>('');
+  const [email, setEmail] = React.useState<string>('');
   const [Password, setPassword] = React.useState<string>('');
   const [phoneNumber, setphoneNumber] = React.useState('');
   const [firstName, setFirstName] = React.useState<string>('');
@@ -39,8 +41,8 @@ export default function Signup({navigation}: GenericNavigationType) {
 
   const checkIsFieldValid = React.useCallback(() => {
     const isInputInvalid =
-      _.isEmpty(Email) ||
-      !EMAIL_REGEX.test(Email) ||
+      _.isEmpty(email) ||
+      !EMAIL_REGEX.test(email) ||
       _.isEmpty(Password) ||
       !PASSWORD_REGEX.test(Password) ||
       _.isEmpty(firstName) ||
@@ -54,13 +56,32 @@ export default function Signup({navigation}: GenericNavigationType) {
     });
 
     return !isInputInvalid && !genderEmpty;
-  }, [Email, Password, phoneNumber, firstName, lastName, gender]);
+  }, [email, Password, phoneNumber, firstName, lastName, gender]);
 
   const isFieldValid = checkIsFieldValid();
 
   const handleSignin = () => {
     navigation.navigate(NAVIGATION_ROUTES.AUTH.SIGNUP)
   };
+
+    const handleSubmit = async () => {
+      let signUpData = {email,
+Password,
+phoneNumber,
+firstName,
+lastName,
+gender};
+      let response = await useDispatch(signUpAction(signUpData));
+      if (response.success) {
+          navigation.navigate(NAVIGATION_ROUTES.AUTH.SPLASH);
+      } else {
+        // Toast.show({
+        //   type: ToastTypes.ERROR,
+        //   text1: response.error,
+        // });
+      console.error();
+      }
+    };
 
    const handleSelectGender = (selectedOption: string) => {
      setGender(selectedOption);
@@ -143,7 +164,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                     containerStyle={Theme.Input.primary}
                     onChange={setEmail}
                     secureTextEntry={false}
-                    value={Email}
+                    value={email}
                     validate={{
                       regex: EMAIL_REGEX,
                       errorMessage: 'Enter Valid Email',
@@ -196,7 +217,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                 <CustomButton
                   title={'Login'}
                   buttonstyle={Theme.Button.login_button}
-                  onPress={() => handleSignin()}
+                  onPress={() => handleSubmit()}
                   fontstyle={Theme.Title.login_button_title}
                   // loading={isLoading}
                   disabled={!isFieldValid}
