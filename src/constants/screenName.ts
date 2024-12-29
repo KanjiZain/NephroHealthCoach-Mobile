@@ -1,11 +1,11 @@
-import SignIn from "@/screens/auth/Signin";
-import Signup from "@/screens/auth/Signup";
-import SplashScreen from "@/screens/auth/splash";
-import Bmi from "@/screens/main/Bmi";
-import DietPlans from "@/screens/main/DietPlans";
-import History from "@/screens/main/History";
-import Home from "@/screens/main/Home";
-import Tests from "@/screens/main/Tests";
+import SignIn from '@/screens/auth/Signin';
+import Signup from '@/screens/auth/Signup';
+import SplashScreen from '@/screens/auth/splash';
+import Bmi from '@/screens/main/Bmi';
+import DietPlans from '@/screens/main/DietPlans';
+import History from '@/screens/main/History';
+import Home from '@/screens/main/Home';
+import Tests from '@/screens/main/Tests';
 
 export const NAVIGATION_ROUTES = {
   AUTH: {
@@ -18,10 +18,9 @@ export const NAVIGATION_ROUTES = {
     BMI: 'Bmi',
     DIET: 'Diet',
     HISTORY: 'History',
-    TEST:'Test'
+    TEST: 'Test',
   },
 };
-
 
 export const NAVIGATION_ROUTES_AUTH = [
   {

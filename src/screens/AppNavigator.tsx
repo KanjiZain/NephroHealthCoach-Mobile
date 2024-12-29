@@ -1,16 +1,18 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {NAVIGATION_ROUTES, NAVIGATION_ROUTES_AUTH, NAVIGATION_ROUTES_MAIN} from '@/constants/screenName';
-import { NavigationContainer } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
-import { IStateReducers } from '@/store/types';
+import {
+  NAVIGATION_ROUTES,
+  NAVIGATION_ROUTES_AUTH,
+  NAVIGATION_ROUTES_MAIN,
+} from '@/constants/screenName';
+import {NavigationContainer} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
+import {IStateReducers} from '@/store/types';
 
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
-    const {isAuthenticated} = useSelector(
-      (state: IStateReducers) => state.auth,
-    );
+  const {isAuthenticated} = useSelector((state: IStateReducers) => state.auth);
   return (
     <NavigationContainer>
       {!isAuthenticated ? (

@@ -15,7 +15,7 @@ import Title from '../title';
 import {Theme} from '@/theme';
 import CenterView from './CenterView';
 import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
-import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons/faChevronCircleLeft';
+import {faChevronCircleLeft} from '@fortawesome/free-solid-svg-icons/faChevronCircleLeft';
 import Colors from '@/constants/color';
 
 interface HeaderProps {
@@ -40,15 +40,12 @@ const Header: React.FC<HeaderProps> = ({
   subTitleText,
   containerStyle,
 }) => {
-  
-    const navigation = useNavigation();
-
+  const navigation = useNavigation();
 
   const onBackButtonPressed = () => {
-      navigation.goBack();
+    navigation.goBack();
   };
 
-  
   return (
     <CenterView>
       <View style={[styles.headerView, containerStyle && containerStyle]}>

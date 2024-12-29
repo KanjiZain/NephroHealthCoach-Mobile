@@ -3,10 +3,7 @@ import FullView from '@/components/shared/FullView';
 import Title from '@/components/title';
 import Wrapper from '@/theme/Wrapper';
 import {GenericNavigationType} from '@/types/navigation';
-import {
-  normalizeFont,
-  normalizeHeight,
-} from '@/utils/styleUtil';
+import {normalizeFont, normalizeHeight} from '@/utils/styleUtil';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as React from 'react';
@@ -35,7 +32,7 @@ import {useTypedDispatch} from '@/store';
 export default function SignIn({navigation}: GenericNavigationType) {
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
-  const {email: emailRedux,isLoading} = useSelector(
+  const {email: emailRedux, isLoading} = useSelector(
     (state: IStateReducers) => state.auth,
   );
   const dispatch = useTypedDispatch();
@@ -67,7 +64,7 @@ export default function SignIn({navigation}: GenericNavigationType) {
     };
     let response = await dispatch(loginAction(loginData));
     if (response.success) {
-     navigation.navigate(NAVIGATION_ROUTES.MAIN.HOME)
+      navigation.navigate(NAVIGATION_ROUTES.MAIN.HOME);
     } else {
       Toast.show({
         type: ToastTypes.ERROR,
@@ -222,5 +219,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 5,
   },
-
 });

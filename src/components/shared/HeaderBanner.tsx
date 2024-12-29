@@ -1,17 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import GradientView from "@/components/shared/GradientView"
+import {StyleSheet, Text, View} from 'react-native';
+import GradientView from '@/components/shared/GradientView';
 import Title from '../title';
-import { useTypedSelector } from '@/store';
-import { capitalizeFirstLetter, getInitials } from '@/helpers';
-import { normalizeHeight, normalizeWidth, normalizeWithScale } from '@/utils/styleUtil';
-import { typography } from '@/utils/fontUtil';
+import {useTypedSelector} from '@/store';
+import {capitalizeFirstLetter, getInitials} from '@/helpers';
+import {
+  normalizeHeight,
+  normalizeWidth,
+  normalizeWithScale,
+} from '@/utils/styleUtil';
+import {typography} from '@/utils/fontUtil';
 import Colors from '@/constants/color';
 
 export default function HeaderBanner({}) {
   const {firstName} = useTypedSelector(state => state.auth);
   const userInitials = getInitials(firstName);
-  const firstLetter = capitalizeFirstLetter(firstName)
+  const firstLetter = capitalizeFirstLetter(firstName);
   return (
     <GradientView
       startColor={Colors.blue}
@@ -26,8 +30,10 @@ export default function HeaderBanner({}) {
         <View style={styles.avatarCircle}>
           <Text style={styles.avatarInitials}>{userInitials}</Text>
         </View>
-        <Title title={`Welcome,  ${firstLetter}`} titlestyle={styles.titleText} />
-       
+        <Title
+          title={`Welcome,  ${firstLetter}`}
+          titlestyle={styles.titleText}
+        />
       </View>
     </GradientView>
   );

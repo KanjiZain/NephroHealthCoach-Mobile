@@ -1,11 +1,11 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import {
   faUser,
   faUtensils,
   faVials,
   faHistory,
 } from '@fortawesome/free-solid-svg-icons';
-import { NAVIGATION_ROUTES } from "./screenName";
+import {NAVIGATION_ROUTES} from './screenName';
 
 const GENDERS = ['Male', 'Female', 'Other'];
 
@@ -14,8 +14,6 @@ export const GenderListWithLabel = GENDERS.map(month => ({
   value: month,
 }));
 
-
-
 export const HomeMenus = [
   {title: 'BMI', icon: faUser as IconProp, route: 'BMI'},
   {title: 'Diet Plans', icon: faUtensils as IconProp, route: 'DIET'},
@@ -23,11 +21,11 @@ export const HomeMenus = [
   {title: 'History', icon: faHistory as IconProp, route: 'HISTORY'},
 ];
 
-
-  export const titleToRouteMap: {[key: string]: keyof typeof NAVIGATION_ROUTES.MAIN} =
-    {
-      BMI: 'BMI',
-      'Diet Plans': 'DIET',
-      Tests: 'TEST',
-      History: 'HISTORY',
-    };
+export const titleToRouteMap: {
+  [key: string]: keyof typeof NAVIGATION_ROUTES.MAIN;
+} = {
+  BMI: 'BMI',
+  'Diet Plans': 'DIET',
+  Tests: 'TEST',
+  History: 'HISTORY',
+};

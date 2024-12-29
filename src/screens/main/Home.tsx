@@ -1,22 +1,31 @@
-import { IMAGES } from '@/assests/images';
+import {IMAGES} from '@/assests/images';
 import CenterView from '@/components/shared/CenterView';
 import FullView from '@/components/shared/FullView';
 import HeaderBanner from '@/components/shared/HeaderBanner';
 import Title from '@/components/title';
-import { HomeMenus, titleToRouteMap } from '@/constants';
+import {HomeMenus, titleToRouteMap} from '@/constants';
 import Colors from '@/constants/color';
-import { NAVIGATION_ROUTES } from '@/constants/screenName';
+import {NAVIGATION_ROUTES} from '@/constants/screenName';
 import Wrapper from '@/theme/Wrapper';
-import { GenericNavigationType } from '@/types/navigation';
-import { typography } from '@/utils/fontUtil';
-import { normalizeFont, normalizeHeight, normalizeWithScale } from '@/utils/styleUtil';
+import {GenericNavigationType} from '@/types/navigation';
+import {typography} from '@/utils/fontUtil';
+import {
+  normalizeFont,
+  normalizeHeight,
+  normalizeWithScale,
+} from '@/utils/styleUtil';
 import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
 import React from 'react';
-import { ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 export default function Home({navigation}: GenericNavigationType) {
-
-
   const handlePageChange = (title: string) => {
     const routeName = titleToRouteMap[title];
     if (routeName) {
@@ -63,7 +72,6 @@ export default function Home({navigation}: GenericNavigationType) {
     </Wrapper>
   );
 }
-
 
 const styles = StyleSheet.create({
   signInTitleText: {

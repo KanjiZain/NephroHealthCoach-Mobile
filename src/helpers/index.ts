@@ -1,6 +1,5 @@
 export * from './regex';
 
-
 export const getInitials = (name: string) => {
   const nameParts = name.trim().split(' ');
   if (nameParts.length === 1) {
@@ -10,6 +9,8 @@ export const getInitials = (name: string) => {
 };
 
 export const capitalizeFirstLetter = (str: string): string => {
-  if (!str) return '';
+  if (!str) {
+    return '';
+  }
   return str.charAt(0).toUpperCase() + str.slice(1);
 };

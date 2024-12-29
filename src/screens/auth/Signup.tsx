@@ -10,8 +10,8 @@ import {
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as React from 'react';
-import { StyleSheet, View} from 'react-native';
-import { typography} from '@/utils/fontUtil';
+import {StyleSheet, View} from 'react-native';
+import {typography} from '@/utils/fontUtil';
 import Colors from '@/constants/color';
 import InputView from '@/components/shared/InputView';
 import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
@@ -106,7 +106,7 @@ export default function Signup({navigation}: GenericNavigationType) {
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <CenterView>
             <FullView containerStyle={{gap: normalizeHeight(10)}}>
-              <Header title='Register To Join Us'/>
+              <Header title="Register To Join Us" />
               <FullView containerStyle={{padding: 0}}>
                 <InputView>
                   <CustomInput
