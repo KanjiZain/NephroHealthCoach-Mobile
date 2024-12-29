@@ -27,7 +27,7 @@ export const Title = {
     marginVertical: normalizeHeight(3),
   },
   page_title: {
-    fontSize: normalizeFont(16),
+    fontSize: normalizeFont(20),
     fontFamily: FontType.Outfit.Bold,
     color: Colors.white,
     marginVertical: normalizeHeight(5),

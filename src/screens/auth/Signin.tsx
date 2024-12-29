@@ -6,8 +6,6 @@ import {GenericNavigationType} from '@/types/navigation';
 import {
   normalizeFont,
   normalizeHeight,
-  normalizeWidth,
-  normalizeWithScale,
 } from '@/utils/styleUtil';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -37,7 +35,7 @@ import {useTypedDispatch} from '@/store';
 export default function SignIn({navigation}: GenericNavigationType) {
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
-  const {email: emailRedux} = useSelector(
+  const {email: emailRedux,isLoading} = useSelector(
     (state: IStateReducers) => state.auth,
   );
   const dispatch = useTypedDispatch();
@@ -69,7 +67,7 @@ export default function SignIn({navigation}: GenericNavigationType) {
     };
     let response = await dispatch(loginAction(loginData));
     if (response.success) {
-     
+     navigation.navigate(NAVIGATION_ROUTES.MAIN.HOME)
     } else {
       Toast.show({
         type: ToastTypes.ERROR,
@@ -152,7 +150,7 @@ export default function SignIn({navigation}: GenericNavigationType) {
                   buttonstyle={Theme.Button.login_button}
                   onPress={() => handleSubmit()}
                   fontstyle={Theme.Title.login_button_title}
-                  // loading={isLoading}
+                  loading={isLoading}
                   disabled={!isFieldValid}
                 />
               </SafeAreaView>
@@ -186,16 +184,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  overlayIcon: {
-    position: 'absolute',
-    top: normalizeHeight(40),
-    left: normalizeWidth(20),
-  },
-  forogotContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
   imageContainer: {
     height: Platform.OS === 'ios' ? normalizeHeight(250) : normalizeHeight(350),
     width: '100%',
@@ -203,14 +191,7 @@ const styles = StyleSheet.create({
   signInTitleText: {
     ...typography.h1,
   },
-  companyLogoText: {
-    ...typography.h1,
-    color: Colors.cosmos_blue,
-  },
-  forgotPasswordText: {
-    ...typography.body2,
-    fontFamily: FontType.Outfit.Light,
-  },
+
   registerRedirectionText: {
     ...typography.body2,
     fontFamily: FontType.Outfit.Light,
@@ -230,68 +211,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  bottomSheetView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: normalizeHeight(13),
-    flexDirection: 'row',
-  },
-
-  bottomSheetContainer: {
-    backgroundColor: Colors.blue,
-    borderTopLeftRadius: normalizeWithScale(35),
-    borderTopRightRadius: normalizeWithScale(35),
-  },
-  bottomSheetIcons: {
-    marginHorizontal: normalizeHeight(13),
-    width: normalizeWidth(30),
-    height: normalizeHeight(30),
-  },
-
-  toggleContainer: {
-    display: 'flex',
-    width: normalizeWidth(50),
-    height: normalizeHeight(30),
-    borderRadius: normalizeWithScale(20),
-    backgroundColor: Colors.flickering_gold,
-    marginHorizontal: normalizeHeight(10),
-    justifyContent: 'center',
-    padding: normalizeWithScale(5),
-  },
-  toggleBackground: {
-    flex: 1,
-    borderRadius: normalizeWithScale(20),
-    backgroundColor: Colors.flickering_gold,
-  },
-  toggleButton: {
-    width: normalizeWidth(20),
-    height: normalizeHeight(20),
-    borderRadius: normalizeWithScale(100),
-    backgroundColor: Colors.white,
-  },
-  languageText: {
-    color: Colors.black,
-    fontSize: normalizeFont(12),
-  },
-  toggleWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    position: 'absolute',
-    top: normalizeHeight(30),
-    right: normalizeWidth(10),
-  },
-  container1: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   mainContainer: {
     flex: 1,
     width: '100%',
@@ -303,27 +222,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 5,
   },
-  fingerprintButtonView: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '80%',
-    justifyContent: 'center',
-    gap: normalizeWidth(5),
-  },
-  biometricsButton: {
-    padding: normalizeWithScale(5),
-    borderRadius: normalizeFont(8),
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  biometricsIcon: {
-    width: normalizeWidth(50),
-    height: normalizeHeight(50),
-    tintColor: Colors.white,
-  },
-  biometricsIconDisabled: {
-    width: normalizeWidth(50),
-    height: normalizeHeight(50),
-    tintColor: Colors.grey,
-  },
+
 });

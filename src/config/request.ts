@@ -9,7 +9,7 @@ const REQ_TIMEOUT = 10 * 60 * 1000; // 10 minutes
 
 export const apiCache = new (LRUCache as any)({max: 500, ttl: 1000 * 60 * 5});
 const baseUrl =
-  'https://2358-2406-d00-dddd-52c3-e519-48bb-6c4e-4d87.ngrok-free.app/api/v1/';
+  'https://8704-2406-d00-dddd-9101-cc55-23d4-b02f-b58.ngrok-free.app/api/v1/';
 
 const instance = Axios.create({
   baseURL: baseUrl,

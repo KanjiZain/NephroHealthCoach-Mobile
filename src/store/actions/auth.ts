@@ -8,6 +8,9 @@ export const loginAction =
   (requestData: ILoginData) =>
   async (dispatch: Dispatch<ActionParams | any>) => {
     try {
+       dispatch({
+         type: AuthActionsType.LOGIN_LOADING,
+       });
       const response = await requestLogin(requestData);
       dispatch({
         type: AuthActionsType.LOGIN_SUCCESS,

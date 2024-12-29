@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.cosmos_blue,
   },
+  
 });
 
 export default Wrapper;

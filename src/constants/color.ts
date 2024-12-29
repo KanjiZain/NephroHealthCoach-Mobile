@@ -8,7 +8,7 @@ const Colors = {
   transparent: 'transparent',
   brown: '#C5A769',
   light_brown: '#fadc9d',
-  blue: '#296086',
+  blue: '#1d4e70',
   light_gray: '#aaa',
   light_weight_grey: '#ffffff60',
   warm_yellow: '#fdb125',

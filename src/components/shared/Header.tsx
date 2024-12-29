@@ -9,11 +9,14 @@ import {
 
 import {GenericNavigationType} from '@/types/navigation';
 import {useNavigation} from '@react-navigation/native';
-import {normalizeHeight, normalizeWithScale} from '@/utils/styleUtil';
+import {normalizeFont, normalizeHeight} from '@/utils/styleUtil';
 import Spacer from '.';
 import Title from '../title';
 import {Theme} from '@/theme';
 import CenterView from './CenterView';
+import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
+import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons/faChevronCircleLeft';
+import Colors from '@/constants/color';
 
 interface HeaderProps {
   inputstyle?: InputStyleProps;
@@ -37,10 +40,28 @@ const Header: React.FC<HeaderProps> = ({
   subTitleText,
   containerStyle,
 }) => {
+  
+    const navigation = useNavigation();
+
+
+  const onBackButtonPressed = () => {
+      navigation.goBack();
+  };
+
+  
   return (
     <CenterView>
       <View style={[styles.headerView, containerStyle && containerStyle]}>
         {!subtitle && <Spacer size={normalizeHeight(10)} />}
+        <TouchableOpacity
+          onPress={onBackButtonPressed}
+          style={styles.backButton}>
+          <FontAwesomeWrapper
+            icon={faChevronCircleLeft}
+            color={Colors.white}
+            size={normalizeFont(18)}
+          />
+        </TouchableOpacity>
         <View style={styles.title_heading}>
           <Title title={title || ''} titlestyle={Theme.Title.page_title} />
 
@@ -74,8 +95,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    padding: normalizeWithScale(10),
-    marginTop: normalizeHeight(10),
   },
   title_heading: {
     flexDirection: 'row',
@@ -83,8 +102,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textContainer: {
-    marginTop: normalizeHeight(10),
     alignItems: 'center',
+  },
+  backButton: {
+    position: 'absolute',
+    left: 0,
+  },
+  icon: {
+    position: 'absolute',
+    right: 0,
   },
 });
 

@@ -1,7 +1,6 @@
 //@ts-ignore
 import AppNavigator from '@/screens/AppNavigator';
 //@ts-ignore
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {LogBox} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
@@ -20,10 +19,8 @@ function App(): React.JSX.Element {
   return (
     <Provider store={store}>
       <GestureHandlerRootView style={{flex: 1}}>
-        <NavigationContainer>
           <AppNavigator />
           <Toast config={toastConfig as any} />
-        </NavigationContainer>
       </GestureHandlerRootView>
     </Provider>
   );

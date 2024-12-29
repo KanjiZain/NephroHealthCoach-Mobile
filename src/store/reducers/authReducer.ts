@@ -8,7 +8,7 @@ const initialState: IAuthState = {
   mobile: '',
   gender: '',
   password: '',
-  isLoading: true,
+  isLoading: false,
   isAuthenticated: false,
 };
 
@@ -24,6 +24,11 @@ export const authReducer = (state = initialState, action: ActionParams) => {
         gender: '',
       };
     case AuthActionsType.LOGOUT_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case AuthActionsType.LOGIN_LOADING:
       return {
         ...state,
         isLoading: true,

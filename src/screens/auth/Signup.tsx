@@ -6,13 +6,12 @@ import {
   normalizeFont,
   normalizeHeight,
   normalizeWidth,
-  normalizeWithScale,
 } from '@/utils/styleUtil';
 import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as React from 'react';
-import {Platform, StyleSheet, View} from 'react-native';
-import {FontType, typography} from '@/utils/fontUtil';
+import { StyleSheet, View} from 'react-native';
+import { typography} from '@/utils/fontUtil';
 import Colors from '@/constants/color';
 import InputView from '@/components/shared/InputView';
 import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
@@ -38,7 +37,7 @@ import Toast from 'react-native-toast-message';
 import {ToastTypes} from '@/enums';
 import {useSelector} from 'react-redux';
 import {IStateReducers} from '@/store/types';
-import Title from '@/components/title';
+import Header from '@/components/shared/Header';
 
 export default function Signup({navigation}: GenericNavigationType) {
   const [email, setEmail] = React.useState<string>('');
@@ -107,10 +106,7 @@ export default function Signup({navigation}: GenericNavigationType) {
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <CenterView>
             <FullView containerStyle={{gap: normalizeHeight(10)}}>
-              <Title
-                title={'Register To Join Us'}
-                titlestyle={styles.signInTitleText}
-              />
+              <Header title='Register To Join Us'/>
               <FullView containerStyle={{padding: 0}}>
                 <InputView>
                   <CustomInput
@@ -248,117 +244,9 @@ export default function Signup({navigation}: GenericNavigationType) {
 }
 
 const styles = StyleSheet.create({
-  background: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'row',
-    flex: 1,
-    width: '100%',
-    height: '100%',
-  },
-  overlayIcon: {
-    position: 'absolute',
-    top: normalizeHeight(40),
-    left: normalizeWidth(20),
-  },
-  forogotContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  imageContainer: {
-    height: Platform.OS === 'ios' ? normalizeHeight(250) : normalizeHeight(350),
-    width: '100%',
-  },
   signInTitleText: {
     ...typography.h3,
     marginTop: normalizeHeight(20),
-  },
-  companyLogoText: {
-    ...typography.h1,
-    color: Colors.cosmos_blue,
-  },
-  forgotPasswordText: {
-    ...typography.body2,
-    fontFamily: FontType.Outfit.Light,
-  },
-  registerRedirectionText: {
-    ...typography.body2,
-    fontFamily: FontType.Outfit.Light,
-    color: Colors.white,
-    marginTop: normalizeHeight(5),
-    marginBottom: normalizeHeight(5),
-  },
-  registerRedirectionTextBold: {
-    ...typography.body2,
-    fontFamily: FontType.Outfit.Bold,
-    color: Colors.white,
-    marginTop: normalizeHeight(5),
-    marginBottom: normalizeHeight(5),
-  },
-  bottomViewContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '50%',
-    marginLeft: normalizeHeight(70),
-  },
-  bottomSheetView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: normalizeHeight(13),
-    flexDirection: 'row',
-  },
-
-  bottomSheetContainer: {
-    backgroundColor: Colors.blue,
-    borderTopLeftRadius: normalizeWithScale(35),
-    borderTopRightRadius: normalizeWithScale(35),
-  },
-  bottomSheetIcons: {
-    marginHorizontal: normalizeHeight(13),
-    width: normalizeWidth(30),
-    height: normalizeHeight(30),
-  },
-
-  toggleContainer: {
-    display: 'flex',
-    width: normalizeWidth(50),
-    height: normalizeHeight(30),
-    borderRadius: normalizeWithScale(20),
-    backgroundColor: Colors.flickering_gold,
-    marginHorizontal: normalizeHeight(10),
-    justifyContent: 'center',
-    padding: normalizeWithScale(5),
-  },
-  toggleBackground: {
-    flex: 1,
-    borderRadius: normalizeWithScale(20),
-    backgroundColor: Colors.flickering_gold,
-  },
-  toggleButton: {
-    width: normalizeWidth(20),
-    height: normalizeHeight(20),
-    borderRadius: normalizeWithScale(100),
-    backgroundColor: Colors.white,
-  },
-  languageText: {
-    color: Colors.black,
-    fontSize: normalizeFont(12),
-  },
-  toggleWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    position: 'absolute',
-    top: normalizeHeight(30),
-    right: normalizeWidth(10),
   },
   container1: {
     display: 'flex',
@@ -376,32 +264,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginLeft: 5,
-  },
-  fingerprintButtonView: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '80%',
-    justifyContent: 'center',
-    gap: normalizeWidth(5),
-  },
-  biometricsButton: {
-    padding: normalizeWithScale(5),
-    borderRadius: normalizeFont(8),
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  biometricsIcon: {
-    width: normalizeWidth(50),
-    height: normalizeHeight(50),
-    tintColor: Colors.white,
-  },
-  biometricsIconDisabled: {
-    width: normalizeWidth(50),
-    height: normalizeHeight(50),
-    tintColor: Colors.grey,
-  },
-  headertitle: {
-    color: Colors.white,
   },
   gender: {
     display: 'flex',
