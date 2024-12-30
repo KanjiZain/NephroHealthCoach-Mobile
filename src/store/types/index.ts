@@ -17,4 +17,14 @@ export interface IAuthState {
 
 export interface IStateReducers {
   auth: IAuthState;
+  bmi: IBmiState;
+}
+
+export interface IBmiState {
+  age: number;
+  weight: number;
+  height: number;
+  bmi: string;
+  timestamp: string;
+  gender?: string | null;
 }

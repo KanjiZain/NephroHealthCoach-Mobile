@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
+    marginTop: normalizeHeight(20),
   },
   title_heading: {
     flexDirection: 'row',
