@@ -16,12 +16,13 @@ export const authReducer = (state = initialState, action: ActionParams) => {
   switch (action.type) {
     case AuthActionsType.LOGOUT:
       return {
-        ...state,
         email: '',
         firstName: '',
         lastName: '',
         phoneNumber: '',
         gender: '',
+        isLoading: false,
+        isAuthenticated: false,
       };
     case AuthActionsType.LOGOUT_LOADING:
       return {

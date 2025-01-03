@@ -34,16 +34,7 @@ useEffect(() => {
     setLoading(false)
   }, 3000); })
 
-  const renderItem = ({item}: {item: IBmiState}) => (
-    <BmiItem
-      key={item.timestamp}
-      age={item.age}
-      weight={item.weight}
-      height={item.height}
-      bmi={item.bmi}
-      gender={item.gender}
-    />
-  );
+  const renderItem = ({item}: {item: IBmiState}) => <BmiItem {...item} />;
 
   return (
     <View style={{flex: 1, backgroundColor: Colors.cosmos_blue}}>

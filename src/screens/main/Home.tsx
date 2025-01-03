@@ -38,7 +38,6 @@ export default function Home({navigation}: GenericNavigationType) {
   return (
     <Wrapper>
       <HeaderBanner />
-
       <ScrollView bounces={false} horizontal={false}>
         <ImageBackground
           source={IMAGES.bg_logo_low}
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
   box: {
     backgroundColor: 'lightgrey',
     width: '43%',
-    height: '60%',
+    height: '40%',
     borderRadius: 10, // Rounded square
     justifyContent: 'center',
     alignItems: 'center',

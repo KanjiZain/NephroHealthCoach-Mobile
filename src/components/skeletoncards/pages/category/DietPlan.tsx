@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, ScrollView,FlatList} from 'react-native';
 import {
   normalizeFont,
   normalizeHeight,
@@ -9,8 +9,7 @@ import {
 import GradientView from '@/components/shared/GradientView';
 import Colors from '@/constants/color';
 import {FontType, typography} from '@/utils/fontUtil';
-import {IMAGES} from '@/assests/images';
-
+  
 interface DietItemProps {
   gfrResult: number;
   ckdStageMessage: string;

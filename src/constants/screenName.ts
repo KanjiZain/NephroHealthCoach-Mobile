@@ -2,6 +2,7 @@ import SignIn from '@/screens/auth/Signin';
 import Signup from '@/screens/auth/Signup';
 import SplashScreen from '@/screens/auth/splash';
 import Bmi from '@/screens/main/Bmi';
+import Chatbot from '@/screens/main/Chatbot';
 import DietPlans from '@/screens/main/DietPlans';
 import History from '@/screens/main/History';
 import Home from '@/screens/main/Home';
@@ -19,6 +20,7 @@ export const NAVIGATION_ROUTES = {
     DIET: 'Diet',
     HISTORY: 'History',
     TEST: 'Test',
+    CHAT: 'CHAT',
   },
 };
 
@@ -64,6 +66,11 @@ export const NAVIGATION_ROUTES_MAIN = [
   {
     name: 'Test',
     component: Tests,
+    options: {headerShown: false},
+  },
+  {
+    name: 'CHAT',
+    component: Chatbot,
     options: {headerShown: false},
   },
 ];

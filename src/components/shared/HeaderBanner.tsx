@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import GradientView from '@/components/shared/GradientView';
 import Title from '../title';
-import {useTypedSelector} from '@/store';
+import {useTypedDispatch, useTypedSelector} from '@/store';
 import {capitalizeFirstLetter, getInitials} from '@/helpers';
 import {
   normalizeHeight,
@@ -11,14 +11,16 @@ import {
 } from '@/utils/styleUtil';
 import {typography} from '@/utils/fontUtil';
 import Colors from '@/constants/color';
+import { logoutAction } from '@/store/actions';
 
 export default function HeaderBanner({}) {
   const {firstName} = useTypedSelector(state => state.auth);
   const userInitials = getInitials(firstName);
   const firstLetter = capitalizeFirstLetter(firstName);
+  const dispatch = useTypedDispatch();
 
   const handleLogout = () => {
-    console.log('Logout button pressed');
+    dispatch(logoutAction());
   };
 
   return (

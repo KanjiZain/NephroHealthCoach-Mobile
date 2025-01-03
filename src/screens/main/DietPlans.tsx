@@ -40,14 +40,7 @@ export default function DietPlans() {
       setLoading(false)
     }, 3000); })
 
-  const renderItem = ({item}: {item: IDietState}) => (
-    <DietItem
-      ckdStageMessage={item.ckdStageMessage}
-      gfrResult={item.gfrResult}
-      mealPlan={item.mealPlan}
-      key={item.gfrResult}
-    />
-  );
+  const renderItem = ({item}: {item: IDietState}) => <DietItem {...item} />;
 
   useEffect(() => {
     setInterval(() => {
@@ -91,7 +84,7 @@ export default function DietPlans() {
                       size={normalizeWithScale(30)}
                       color={Colors.white}
                     />
-                    <Text>No branches available.</Text>
+                    <Text>No Data Available</Text>
                     <Text>Please try again later.</Text>
                   </EmptylistView>
                 );
