@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import GradientView from '@/components/shared/GradientView';
 import Title from '../title';
 import {useTypedSelector} from '@/store';
@@ -16,6 +16,11 @@ export default function HeaderBanner({}) {
   const {firstName} = useTypedSelector(state => state.auth);
   const userInitials = getInitials(firstName);
   const firstLetter = capitalizeFirstLetter(firstName);
+
+  const handleLogout = () => {
+    console.log('Logout button pressed');
+  };
+
   return (
     <GradientView
       startColor={Colors.blue}
@@ -35,6 +40,9 @@ export default function HeaderBanner({}) {
           titlestyle={styles.titleText}
         />
       </View>
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <Text style={styles.logoutButtonText}>Logout</Text>
+      </TouchableOpacity>
     </GradientView>
   );
 }
@@ -59,7 +67,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: normalizeWidth(10),
   },
-
   avatarCircle: {
     width: normalizeWidth(40),
     height: normalizeHeight(40),
@@ -68,22 +75,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
   avatarInitials: {
     color: Colors.white,
     fontSize: normalizeWithScale(18),
     fontWeight: 'bold',
   },
-  notificationBadge: {
-    position: 'relative',
-    top: normalizeHeight(-5),
-    right: normalizeWidth(-5),
-    backgroundColor: Colors.Camel,
-    width: normalizeWidth(20),
-    height: normalizeHeight(20),
-    borderRadius: normalizeWithScale(15),
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1,
+  logoutButton: {
+    backgroundColor: Colors.lightGrey,
+    paddingVertical: normalizeHeight(5),
+    paddingHorizontal: normalizeWidth(12),
+    borderRadius: normalizeWithScale(5),
+  },
+  logoutButtonText: {
+    color: Colors.black,
+    fontSize: normalizeWithScale(14),
+    fontWeight: 'bold',
   },
 });

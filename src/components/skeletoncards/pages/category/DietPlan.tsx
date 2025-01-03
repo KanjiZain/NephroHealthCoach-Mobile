@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Image, FlatList} from 'react-native';
 import {
   normalizeFont,
   normalizeHeight,
@@ -11,32 +11,37 @@ import Colors from '@/constants/color';
 import {FontType, typography} from '@/utils/fontUtil';
 import {IMAGES} from '@/assests/images';
 
-interface BmiItemProps {
-  age: number;
-  weight: number;
-  height: number;
-  bmi: string;
-  gender?: string | null;
+interface DietItemProps {
+  gfrResult: number;
+  ckdStageMessage: string;
+  mealPlan: {
+    breakfast?: string | null;
+    midMeal?: string | null;
+    lunch?: string | null;
+    eveningNourishment?: string | null;
+    dinner?: string | null;
+    bedtime?: string | null;
+  };
 }
 
-const BmiItem: React.FC<BmiItemProps> = ({
-  age,
-  weight,
-  height,
-  bmi,
-  gender,
+const DietItem: React.FC<DietItemProps> = ({
+  gfrResult,
+  ckdStageMessage,
+  mealPlan,
 }) => {
   const data = [
-    {label: 'Age', value: age},
-    {label: 'Weight', value: `${weight} kg`},
-    {label: 'Height', value: `${height} cm`},
-    {label: 'BMI', value: bmi},
-    {label: 'Gender', value: gender || 'Not specified'},
+    {label: 'GFR Result', value: gfrResult},
+    {label: 'CKD Stage', value: ckdStageMessage},
   ];
+
+  const mealPlanData = Object.entries(mealPlan).map(([key, value]) => ({
+    label: key.charAt(0).toUpperCase() + key.slice(1),
+    value: value || 'Not specified',
+  }));
+
 
   return (
     <View style={styles.MainContainer}>
-      <Image source={IMAGES.bmi} style={styles.image} />
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         {data.map((item, index) => (
           <GradientView
@@ -54,6 +59,26 @@ const BmiItem: React.FC<BmiItemProps> = ({
             </Text>
           </GradientView>
         ))}
+        <GradientView
+          endColor={Colors.cosmos_blue}
+          startColor={Colors.blue}
+          startAngleX={0}
+          startAngleY={0}
+          endAngleX={1}
+          endAngleY={0}
+          opacity={1}
+          style={styles.container}>
+          <FlatList
+            data={mealPlanData}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <Text style={styles.dataText}>
+                {'\u2022'} {item.label}: {item.value}
+                {'\n'} {'\n'}
+              </Text>
+            )}
+          />
+        </GradientView>
       </ScrollView>
     </View>
   );
@@ -79,15 +104,26 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     flex: 1,
-    marginBottom: normalizeHeight(20),
+    marginBottom:normalizeHeight(20)
   },
   scrollViewContainer: {
     flexGrow: 1,
   },
   image: {
-    width: '100%',
+    width: '98%',
     height: '12%',
+  },
+  item: {
+    flexDirection: 'row',
+    marginBottom: 8,
+  },
+  label: {
+    fontWeight: 'bold',
+    marginRight: 8,
+  },
+  value: {
+    flex: 1,
   },
 });
 
-export default BmiItem;
+export default DietItem;

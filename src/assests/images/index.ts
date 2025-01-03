@@ -4,4 +4,5 @@ export const IMAGES = {
   weight: require('./weight.png'),
   height: require('./height.png'),
   bmi: require('./bmi.png'),
+  diet_bg : require('./diet_bg.png'),
 };
