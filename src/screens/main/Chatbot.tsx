@@ -1,171 +1,210 @@
-import CustomButton from '@/components/button';
-import Header from '@/components/shared/Header';
-import Colors from '@/constants/color';
-import {Theme} from '@/theme';
-import {typography} from '@/utils/fontUtil';
+import React, {useState, useEffect} from 'react';
+import * as GoogleGenerativeAI from '@google/generative-ai';
 import {
-  normalizeFont,
-  normalizeHeight,
-  normalizeWithScale,
-} from '@/utils/styleUtil';
-import axios from 'axios';
-import React, {useState} from 'react';
-import {
-  ScrollView,
-  StyleSheet,
+  View,
   Text,
   TextInput,
-  View,
-  TouchableOpacity, // Import for the Clear Chat button
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
+import Colors from '@/constants/color';
+import Header from '@/components/shared/Header';
+import {normalizeFont} from '@/utils/styleUtil';
+import CustomInput from '@/components/input';
+import {Theme} from '@/theme';
+import CustomButton from '@/components/button';
 
-interface ChatMessage {
-  sender: 'user' | 'bot';
-  text: string;
-}
+const GeminiChat = () => {
+  const [messages, setMessages] = useState([]);
+  const [userInput, setUserInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [showStopIcon, setShowStopIcon] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); // New state for error messages
 
-export default function Chatbot() {
-  const [query, setQuery] = useState<string>('');
-  const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const API_KEY = '';
 
-  const sendToChatbot = async (userQuery: string) => {
+  const Gprompt =
+    "You are a chatbot that only answers questions related to medical, biomedical, bio, science, healthcare, pharmacology, genetics, biology, anatomy, physiology, epidemiology, virology, microbiology, neuroscience, chemistry, biochemistry, or any other scientific or medical topics. If the next text is not about medical, biomedical, bio, science, or any related topics, politely say: 'I can only answer medical-related questions.'";
+
+  useEffect(() => {
+    const startChat = async () => {
+      const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(API_KEY);
+      const model = genAI.getGenerativeModel({model: 'gemini-pro'});
+      const prompt =
+        "You are a chatbot that only answers questions about fitness. If the user asks something unrelated to fitness, politely say: 'I can only answer fitness-related questions.'";
+      const result = await model.generateContent(prompt);
+      const response = result.response;
+      const text = response.text();
+    };
+    startChat();
+  }, []);
+
+  const sendMessage = async () => {
+    if (!userInput.trim()) {
+      setErrorMessage('Please enter a message before sending.'); // Set error message if input is empty
+      return;
+    }
+
     setLoading(true);
-    const prompt = `You are a chatbot that only answers questions about fitness. If the user asks something unrelated to fitness, politely say: 'I can only answer fitness-related questions.'\n\nUser: ${userQuery}\nBot:`;
+    setUserInput('');
+    setErrorMessage(''); // Clear previous error messages
+
+    const userMessage = {text: userInput, user: true};
+
+    // Prepend the new message instead of appending it
+    setMessages([userMessage, ...messages]);
+
+    const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(API_KEY);
+    const model = genAI.getGenerativeModel({model: 'gemini-pro'});
+    const prompt = Gprompt + userMessage.text;
+    console.log(userMessage.text);
 
     try {
-      const response = await axios.post(
-        'https://api.openai.com/v1/completions',
-        {
-          model: 'text-davinci-003',
-          prompt: prompt,
-          max_tokens: 100,
-        },
-        {
-          headers: {
-            Authorization: `Bearer YOUR_API_KEY`,
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+      const result = await model.generateContent(prompt);
+      const response = result.response;
+      const text = response.text();
 
-      const botResponse = response.data.choices[0].text.trim();
-      setChatLog(prevLog => [
-        ...prevLog,
-        {sender: 'user', text: userQuery},
-        {sender: 'bot', text: botResponse},
-      ]);
+      // Prepend the AI's response as well
+      setMessages([{text, user: false}, ...messages]);
     } catch (error) {
-      console.error('Error fetching chatbot response:', error);
-      setChatLog(prevLog => [
-        ...prevLog,
-        {sender: 'bot', text: 'Sorry, something went wrong.'},
-      ]);
-    } finally {
-      setLoading(false);
-      setQuery('');
+          setUserInput('');
+    setMessages([]);
+
+      setErrorMessage(
+        'There was an error processing your request. Please try again later.',
+      ); // Set error message on failure
     }
+
+    setLoading(false);
+    setUserInput('');
   };
 
-  // Handle sending the query
-  const handleSend = () => {
-    if (query.trim()) {
-      sendToChatbot(query.trim());
-    }
+  const ClearMessage = () => {
+    setMessages([]);
+    setIsSpeaking(false);
   };
 
-  // Clear the chat log
-  const handleClearChat = () => {
-    setChatLog([]);
-  };
-
-  return (
-    <View style={{flex: 1, backgroundColor: Colors.cosmos_blue, padding: 20}}>
-      <TouchableOpacity onPress={handleClearChat} style={styles.clearButton}>
-        <Text style={styles.clearButtonText}>Clear Chat</Text>
-      </TouchableOpacity>
-      <Header title={'Chat'} />
-
-      <ScrollView style={styles.chatContainer}>
-        {chatLog.map((message, index) => (
-          <Text
-            key={index}
-            style={
-              message.sender === 'user' ? styles.userText : styles.botText
-            }>
-            {message.text}
-          </Text>
-        ))}
-      </ScrollView>
-      <TextInput
-        style={styles.input}
-        value={query}
-        onChangeText={setQuery}
-        placeholder="Ask me something about fitness..."
-        editable={!loading}
-        multiline={true}
-      />
-
-      <CustomButton
-        title={'Ask'}
-        buttonstyle={Theme.Button.login_button}
-        onPress={handleSend}
-        fontstyle={Theme.Title.login_button_title}
-        loading={loading}
-        disabled={loading}
-      />
+  const renderMessage = ({item}) => (
+    <View
+      style={[
+        styles.messageContainer,
+        item.user ? styles.userMessage : styles.aiMessage,
+      ]}>
+      <Text
+        style={[
+          styles.messageText,
+          item.user ? styles.userText : styles.aiText,
+        ]}>
+        {item.text}
+      </Text>
     </View>
   );
-}
+
+  return (
+    <View style={{flex: 1, backgroundColor: Colors.cosmos_blue}}>
+      <Header title={'Chat'} />
+      <TouchableOpacity onPress={ClearMessage} style={styles.clearButton}>
+        <Text style={styles.clearButtonText}>Clear Chat</Text>
+      </TouchableOpacity>
+      <FlatList data={messages} renderItem={renderMessage} inverted />
+
+      {/* Error Message Box */}
+      {errorMessage ? (
+        <View style={styles.errorBox}>
+          <Text style={styles.errorText}>{errorMessage}</Text>
+        </View>
+      ) : null}
+
+      <View style={styles.inputContainer}>
+        <CustomInput
+          placeholder={'Type a message'}
+          containerStyle={Theme.Input.primary}
+          onChange={setUserInput}
+          value={userInput}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <CustomButton
+          title={'Send'}
+          buttonstyle={Theme.Button.login_button}
+          onPress={() => sendMessage()}
+          fontstyle={Theme.Title.login_button_title}
+          loading={loading}
+          disabled={loading}
+        />
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: normalizeWithScale(20),
-  },
-  chatContainer: {
-    flex: 1,
-    marginBottom: normalizeHeight(10),
-  },
-  userText: {
-    alignSelf: 'flex-end',
-    backgroundColor: '#d1e7dd',
-    padding: normalizeWithScale(10),
-    borderRadius: normalizeWithScale(10),
-    marginVertical: normalizeHeight(5),
-    maxWidth: '80%',
-  },
-  botText: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#f8d7da',
-    padding: normalizeWithScale(10),
-    borderRadius: normalizeWithScale(10),
-    marginVertical: normalizeHeight(5),
-    maxWidth: '80%',
-  },
-  input: {
-    ...typography.body2,
-    lineHeight: normalizeHeight(30),
-    fontSize: normalizeFont(18),
-    borderWidth: normalizeWithScale(1),
-    borderColor: '#ccc',
-    padding: normalizeWithScale(10),
-    borderRadius: normalizeWithScale(5),
-    marginBottom: normalizeHeight(10),
-    color: Colors.white,
-  },
   clearButton: {
     position: 'absolute',
     top: 20,
     right: 20,
-    backgroundColor: Colors.cosmos_blue,
+    backgroundColor: Colors.gray,
     padding: 10,
     borderRadius: 5,
     zIndex: 10,
   },
   clearButtonText: {
-    color: Colors.white,
+    color: Colors.cosmos_blue,
     fontSize: normalizeFont(14),
-    fontWeight: 'bold',
+  },
+  container: {flex: 1, backgroundColor: '#ffff', marginTop: 50},
+  messageContainer: {
+    padding: 10,
+    marginVertical: 5,
+    maxWidth: '80%',
+  },
+  messageText: {
+    fontSize: 16,
+    color: Colors.white,
+    lineHeight: 20,
+  },
+  userMessage: {
+    alignSelf: 'flex-end',
+    borderRadius: 10,
+  },
+  aiMessage: {
+    alignSelf: 'flex-start',
+    backgroundColor: Colors.blue,
+    borderRadius: 10,
+    padding: 10,
+  },
+  userText: {
+    textAlign: 'right',
+  },
+  aiText: {
+    textAlign: 'left',
+  },
+  inputContainer: {flexDirection: 'row', alignItems: 'center', padding: 10},
+  input: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: Colors.transparent,
+    borderRadius: 10,
+    borderColor: 'white',
+    borderWidth: 1,
+    height: 50,
+    color: 'white',
+  },
+  // New error box styles
+  errorBox: {
+    backgroundColor: '#FFCDD2', // Light red color
+    padding: 10,
+    margin: 10,
+    borderRadius: 5,
+    borderColor: '#D32F2F',
+    borderWidth: 1,
+  },
+  errorText: {
+    color: '#D32F2F',
+    fontSize: normalizeFont(14),
+    textAlign: 'center',
   },
 });
+
+export default GeminiChat;
