@@ -53,18 +53,17 @@ export const signUpAction =
     }
   };
 
-
-  export const logoutAction =
-    () => async (dispatch: Dispatch<ActionParams | any>) => {
-      try {
-        dispatch({
-          type: AuthActionsType.LOGOUT,
-        });
-        return;
-      } catch (e) {
-        dispatch({
-          type: AuthActionsType.LOGOUT,
-        });
-        console.error('Logout failed:', e);
-      }
-    };
+export const logoutAction =
+  () => async (dispatch: Dispatch<ActionParams | any>) => {
+    try {
+      dispatch({
+        type: AuthActionsType.LOGOUT,
+      });
+      return;
+    } catch (e) {
+      dispatch({
+        type: AuthActionsType.LOGOUT,
+      });
+      console.error('Logout failed:', e);
+    }
+  };

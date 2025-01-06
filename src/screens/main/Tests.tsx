@@ -4,7 +4,7 @@ import EmptylistView from '@/components/shared/EmptyListView';
 import Header from '@/components/shared/Header';
 import TestItem from '@/components/skeletoncards/pages/category/test';
 import Colors from '@/constants/color';
-import { ITestState } from '@/types';
+import {ITestState} from '@/types';
 import {normalizeWithScale} from '@/utils/styleUtil';
 import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
 import {faTriangleExclamation} from '@fortawesome/free-solid-svg-icons';
@@ -13,46 +13,41 @@ import {ActivityIndicator, FlatList, Text, View} from 'react-native';
 
 export default function Tests() {
   const [loading, setLoading] = useState(true);
- const [testData, setTestData] = useState([
-   {
-     patientName: 'John Doe',
-     patientAge: 45,
-     testDateTime: '2025-01-02 14:30',
-     appearance: 'Clear',
-     colour: 'Yellow',
-     pH: '6.5',
-     specificGravity: '1.020',
-     protein: 'Negative',
-     glucose: 'Negative',
-     ketoneBodies: 'Negative',
-     bilirubin: 'Negative',
-     urobilinogen: 'Normal',
-     leucocyteEsterase: 'Negative',
-     bloodHemoglobin: 'Negative',
-     nitrite: 'Negative',
-     redBloodCells: '0-2',
-     whiteBloodCells: '1-3',
-     epithelialCells: 'Few',
-     cast: 'None',
-     crystals: 'None',
-     bacteria: 'None',
-     yeast: 'None',
-     mucusThreads: 'Few',
-   },
- ]);
+  const [testData, setTestData] = useState([
+    {
+      patientName: 'John Doe',
+      patientAge: 45,
+      testDateTime: '2025-01-02 14:30',
+      appearance: 'Clear',
+      colour: 'Yellow',
+      pH: '6.5',
+      specificGravity: '1.020',
+      protein: 'Negative',
+      glucose: 'Negative',
+      ketoneBodies: 'Negative',
+      bilirubin: 'Negative',
+      urobilinogen: 'Normal',
+      leucocyteEsterase: 'Negative',
+      bloodHemoglobin: 'Negative',
+      nitrite: 'Negative',
+      redBloodCells: '0-2',
+      whiteBloodCells: '1-3',
+      epithelialCells: 'Few',
+      cast: 'None',
+      crystals: 'None',
+      bacteria: 'None',
+      yeast: 'None',
+      mucusThreads: 'Few',
+    },
+  ]);
 
-    useEffect(() => {
-      setInterval(() => {
-        setLoading(false)
-      }, 3000); })
-  
+  useEffect(() => {
+    setInterval(() => {
+      setLoading(false);
+    }, 3000);
+  });
 
-        const renderItem = ({item}: {item: ITestState}) => (
-          <TestItem
-            {...item}
-          />
-        );
-
+  const renderItem = ({item}: {item: ITestState}) => <TestItem {...item} />;
 
   return (
     <View style={{flex: 1, backgroundColor: Colors.cosmos_blue}}>

@@ -11,7 +11,7 @@ import Colors from '@/constants/color';
 import {FontType, typography} from '@/utils/fontUtil';
 
 interface TestItemProps {
-patientName?: string;
+  patientName?: string;
   patientAge?: number;
   testDateTime?: string;
   appearance?: string;
@@ -34,8 +34,7 @@ patientName?: string;
   bacteria?: string;
   yeast?: string;
   mucusThreads?: string;
-  };
-
+}
 
 const TestItem: React.FC<TestItemProps> = ({
   patientName,
@@ -62,31 +61,31 @@ const TestItem: React.FC<TestItemProps> = ({
   yeast,
   mucusThreads,
 }) => {
- const data = [
-   {label: 'Patient Name', value: patientName},
-   {label: 'Patient Age', value: patientAge},
-   {label: 'Test Date & Time', value: testDateTime},
-   {label: 'Appearance', value: appearance},
-   {label: 'Colour', value: colour},
-   {label: 'pH', value: pH},
-   {label: 'Specific Gravity', value: specificGravity},
-   {label: 'Protein', value: protein},
-   {label: 'Glucose', value: glucose},
-   {label: 'Ketone Bodies', value: ketoneBodies},
-   {label: 'Bilirubin', value: bilirubin},
-   {label: 'Urobilinogen', value: urobilinogen},
-   {label: 'Leucocyte Esterase', value: leucocyteEsterase},
-   {label: 'Blood/Hemoglobin', value: bloodHemoglobin},
-   {label: 'Nitrite', value: nitrite},
-   {label: 'Red Blood Cells', value: redBloodCells},
-   {label: 'White Blood Cells', value: whiteBloodCells},
-   {label: 'Epithelial Cells', value: epithelialCells},
-   {label: 'Cast', value: cast},
-   {label: 'Crystals', value: crystals},
-   {label: 'Bacteria', value: bacteria},
-   {label: 'Yeast', value: yeast},
-   {label: 'Mucus Threads', value: mucusThreads},
- ];
+  const data = [
+    {label: 'Patient Name', value: patientName},
+    {label: 'Patient Age', value: patientAge},
+    {label: 'Test Date & Time', value: testDateTime},
+    {label: 'Appearance', value: appearance},
+    {label: 'Colour', value: colour},
+    {label: 'pH', value: pH},
+    {label: 'Specific Gravity', value: specificGravity},
+    {label: 'Protein', value: protein},
+    {label: 'Glucose', value: glucose},
+    {label: 'Ketone Bodies', value: ketoneBodies},
+    {label: 'Bilirubin', value: bilirubin},
+    {label: 'Urobilinogen', value: urobilinogen},
+    {label: 'Leucocyte Esterase', value: leucocyteEsterase},
+    {label: 'Blood/Hemoglobin', value: bloodHemoglobin},
+    {label: 'Nitrite', value: nitrite},
+    {label: 'Red Blood Cells', value: redBloodCells},
+    {label: 'White Blood Cells', value: whiteBloodCells},
+    {label: 'Epithelial Cells', value: epithelialCells},
+    {label: 'Cast', value: cast},
+    {label: 'Crystals', value: crystals},
+    {label: 'Bacteria', value: bacteria},
+    {label: 'Yeast', value: yeast},
+    {label: 'Mucus Threads', value: mucusThreads},
+  ];
 
   return (
     <View style={styles.MainContainer}>

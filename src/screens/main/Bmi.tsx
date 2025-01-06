@@ -12,7 +12,7 @@ import {normalizeHeight, normalizeWithScale} from '@/utils/styleUtil';
 import Header from '@/components/shared/Header';
 import BmiItem from '@/components/skeletoncards/pages/category/items';
 import {useSelector} from 'react-redux';
-import { IBmiState } from '@/types';
+import {IBmiState} from '@/types';
 
 export default function Bmi() {
   const [loading, setLoading] = useState(true);
@@ -29,10 +29,11 @@ export default function Bmi() {
     },
   ]);
 
-useEffect(() => {
-  setInterval(() => {
-    setLoading(false)
-  }, 3000); })
+  useEffect(() => {
+    setInterval(() => {
+      setLoading(false);
+    }, 3000);
+  });
 
   const renderItem = ({item}: {item: IBmiState}) => <BmiItem {...item} />;
 
@@ -41,8 +42,8 @@ useEffect(() => {
       <Header title={'BMI'} />
       <View>
         {loading ? (
-          <View style={{marginTop:normalizeHeight(20)}}>
-          <ActivityIndicator size={'large'}/>
+          <View style={{marginTop: normalizeHeight(20)}}>
+            <ActivityIndicator size={'large'} />
           </View>
         ) : (
           <></>

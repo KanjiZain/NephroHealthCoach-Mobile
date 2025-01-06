@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unstable-nested-components */
-import { IMAGES } from '@/assests/images';
+import {IMAGES} from '@/assests/images';
 import EmptylistView from '@/components/shared/EmptyListView';
 import Header from '@/components/shared/Header';
 import DietItem from '@/components/skeletoncards/pages/category/DietPlan';
@@ -11,7 +11,14 @@ import {normalizeWithScale} from '@/utils/styleUtil';
 import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
 import {faTriangleExclamation} from '@fortawesome/free-solid-svg-icons';
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 export default function DietPlans() {
   const [loading, setLoading] = useState(true);
@@ -34,18 +41,19 @@ export default function DietPlans() {
     },
   ]);
 
-
   useEffect(() => {
     setInterval(() => {
-      setLoading(false)
-    }, 3000); })
+      setLoading(false);
+    }, 3000);
+  });
 
   const renderItem = ({item}: {item: IDietState}) => <DietItem {...item} />;
 
   useEffect(() => {
     setInterval(() => {
-      setLoading(false)
-    }, 3000); })
+      setLoading(false);
+    }, 3000);
+  });
 
   return (
     <View style={{flex: 1, backgroundColor: Colors.cosmos_blue}}>
@@ -96,7 +104,6 @@ export default function DietPlans() {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   backgroundImage: {

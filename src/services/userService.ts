@@ -1,7 +1,6 @@
-import axios, { AxiosResponse } from "axios";
+import axios, {AxiosResponse} from 'axios';
 
-export const requestBMI = async (
-): Promise<AxiosResponse> => {
+export const requestBMI = async (): Promise<AxiosResponse> => {
   try {
     const response = await axios.get('/');
     if (response.status === 200) {
@@ -13,7 +12,6 @@ export const requestBMI = async (
     throw error;
   }
 };
-
 
 export const requestDietPlan = async (): Promise<AxiosResponse> => {
   try {
@@ -27,7 +25,6 @@ export const requestDietPlan = async (): Promise<AxiosResponse> => {
     throw error;
   }
 };
-
 
 export const requestTest = async (): Promise<AxiosResponse> => {
   try {

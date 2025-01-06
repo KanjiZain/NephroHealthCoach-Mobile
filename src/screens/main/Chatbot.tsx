@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useState, useEffect} from 'react';
 import * as GoogleGenerativeAI from '@google/generative-ai';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 import Colors from '@/constants/color';
 import Header from '@/components/shared/Header';
 import {normalizeFont} from '@/utils/styleUtil';
@@ -69,8 +63,8 @@ const GeminiChat = () => {
       // Prepend the AI's response as well
       setMessages([{text, user: false}, ...messages] as any);
     } catch (error) {
-          setUserInput('');
-    setMessages([]);
+      setUserInput('');
+      setMessages([]);
 
       setErrorMessage(
         'There was an error processing your request. Please try again later.',

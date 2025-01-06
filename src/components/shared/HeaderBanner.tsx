@@ -11,7 +11,7 @@ import {
 } from '@/utils/styleUtil';
 import {typography} from '@/utils/fontUtil';
 import Colors from '@/constants/color';
-import { logoutAction } from '@/store/actions';
+import {logoutAction} from '@/store/actions';
 
 export default function HeaderBanner({}) {
   const {firstName} = useTypedSelector(state => state.auth);

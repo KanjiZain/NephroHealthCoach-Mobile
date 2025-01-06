@@ -1,10 +1,5 @@
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import {
-  faUser,
-  faUtensils,
-  faVials,
-
-} from '@fortawesome/free-solid-svg-icons';
+import {faUser, faUtensils, faVials} from '@fortawesome/free-solid-svg-icons';
 import {NAVIGATION_ROUTES} from './screenName';
 
 const GENDERS = ['Male', 'Female', 'Other'];

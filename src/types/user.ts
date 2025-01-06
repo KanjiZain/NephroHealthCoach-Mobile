@@ -7,7 +7,6 @@ export interface IBmiState {
   gender?: string | null;
 }
 
-
 export interface ITestState {
   patientName: string;
   patientAge: number;
@@ -33,7 +32,6 @@ export interface ITestState {
   yeast: string;
   mucusThreads: string;
 }
-
 
 export interface IDietState {
   gfrResult: number;

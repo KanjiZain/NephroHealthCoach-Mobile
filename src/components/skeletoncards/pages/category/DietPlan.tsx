@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView,FlatList} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, FlatList} from 'react-native';
 import {
   normalizeFont,
   normalizeHeight,
@@ -9,7 +9,7 @@ import {
 import GradientView from '@/components/shared/GradientView';
 import Colors from '@/constants/color';
 import {FontType, typography} from '@/utils/fontUtil';
-  
+
 interface DietItemProps {
   gfrResult: number;
   ckdStageMessage: string;
@@ -37,7 +37,6 @@ const DietItem: React.FC<DietItemProps> = ({
     label: key.charAt(0).toUpperCase() + key.slice(1),
     value: value || 'Not specified',
   }));
-
 
   return (
     <View style={styles.MainContainer}>
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     flex: 1,
-    marginBottom:normalizeHeight(20)
+    marginBottom: normalizeHeight(20),
   },
   scrollViewContainer: {
     flexGrow: 1,

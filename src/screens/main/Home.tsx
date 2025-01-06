@@ -36,7 +36,7 @@ const PADDING = normalizeWithScale(10);
 export default function Home({navigation}: GenericNavigationType) {
   const pan = useRef({
     x: SCREEN_WIDTH - BUTTON_SIZE - PADDING,
-    y: SCREEN_HEIGHT - BUTTON_SIZE - PADDING ,
+    y: SCREEN_HEIGHT - BUTTON_SIZE - PADDING,
   }).current;
 
   const [position, setPosition] = useState<{x: number; y: number}>({
@@ -44,33 +44,32 @@ export default function Home({navigation}: GenericNavigationType) {
     y: pan.y,
   });
 
-  const [fadeAnim] = useState(new Animated.Value(1)); 
+  const [fadeAnim] = useState(new Animated.Value(1));
 
+  useEffect(() => {
+    const blinkInterval = setInterval(() => {
+      Animated.sequence([
+        // Fade out slowly
+        Animated.timing(fadeAnim, {
+          toValue: 0,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+        // Fade in quickly
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 800,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }, 2000);
 
-useEffect(() => {
-  const blinkInterval = setInterval(() => {
-    Animated.sequence([
-      // Fade out slowly
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 1500,
-        useNativeDriver: true,
-      }),
-      // Fade in quickly
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 800, 
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, 2000); 
+    setTimeout(() => {
+      clearInterval(blinkInterval);
+    }, 8000);
 
-  setTimeout(() => {
-    clearInterval(blinkInterval);
-  }, 8000);
-
-  return () => clearInterval(blinkInterval);
-}, [fadeAnim]);
+    return () => clearInterval(blinkInterval);
+  }, [fadeAnim]);
 
   const handlePageChange = (title: string) => {
     const routeName = titleToRouteMap[title];
@@ -80,11 +79,10 @@ useEffect(() => {
       console.error(`No route found for title: ${title}`);
     }
   };
-  
 
   const handlePress = () => {
-    navigation.navigate(NAVIGATION_ROUTES.MAIN.CHAT)
-  }
+    navigation.navigate(NAVIGATION_ROUTES.MAIN.CHAT);
+  };
 
   return (
     <Wrapper>
@@ -120,14 +118,14 @@ useEffect(() => {
         </ImageBackground>
       </ScrollView>
 
-        <TouchableOpacity onPress={handlePress}
-          style={[styles.contactButton, {left: position.x, top: position.y}]}
-         >
-          <Animated.View style={[styles.contactText, {opacity: fadeAnim}]}>
-            <Image source={IMAGES.chat_gif} style={styles.gifImage} />
-            <Text style={styles.contactText}>Ask AI</Text>
-          </Animated.View>
-        </TouchableOpacity>
+      <TouchableOpacity
+        onPress={handlePress}
+        style={[styles.contactButton, {left: position.x, top: position.y}]}>
+        <Animated.View style={[styles.contactText, {opacity: fadeAnim}]}>
+          <Image source={IMAGES.chat_gif} style={styles.gifImage} />
+          <Text style={styles.contactText}>Ask AI</Text>
+        </Animated.View>
+      </TouchableOpacity>
     </Wrapper>
   );
 }
@@ -188,7 +186,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: normalizeFont(12),
     fontFamily: FontType.Outfit.Light,
-    marginTop:normalizeHeight(2)
+    marginTop: normalizeHeight(2),
   },
   gifImage: {
     width: BUTTON_SIZE - 25,
