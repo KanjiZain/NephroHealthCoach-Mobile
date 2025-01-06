@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useState, useEffect} from 'react';
 import * as GoogleGenerativeAI from '@google/generative-ai';
 import {
   View,
   Text,
-  TextInput,
   FlatList,
   StyleSheet,
   TouchableOpacity,
@@ -54,7 +54,7 @@ const GeminiChat = () => {
     const userMessage = {text: userInput, user: true};
 
     // Prepend the new message instead of appending it
-    setMessages([userMessage, ...messages]);
+    setMessages([userMessage, ...messages] as any);
 
     const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({model: 'gemini-pro'});
@@ -67,7 +67,7 @@ const GeminiChat = () => {
       const text = response.text();
 
       // Prepend the AI's response as well
-      setMessages([{text, user: false}, ...messages]);
+      setMessages([{text, user: false}, ...messages] as any);
     } catch (error) {
           setUserInput('');
     setMessages([]);
@@ -86,7 +86,7 @@ const GeminiChat = () => {
     setIsSpeaking(false);
   };
 
-  const renderMessage = ({item}) => (
+  const renderMessage = ({item}: any) => (
     <View
       style={[
         styles.messageContainer,

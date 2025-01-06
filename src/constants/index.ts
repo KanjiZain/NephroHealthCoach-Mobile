@@ -3,8 +3,7 @@ import {
   faUser,
   faUtensils,
   faVials,
-  faHistory,
-  faChartArea,
+
 } from '@fortawesome/free-solid-svg-icons';
 import {NAVIGATION_ROUTES} from './screenName';
 
@@ -19,8 +18,6 @@ export const HomeMenus = [
   {title: 'BMI', icon: faUser as IconProp, route: 'BMI'},
   {title: 'Diet Plans', icon: faUtensils as IconProp, route: 'DIET'},
   {title: 'Tests', icon: faVials as IconProp, route: 'Test'},
-  {title: 'History', icon: faHistory as IconProp, route: 'HISTORY'},
-  {title: 'CHAT', icon: faChartArea as IconProp, route: 'CHAT'},
 ];
 
 export const titleToRouteMap: {
@@ -29,6 +26,4 @@ export const titleToRouteMap: {
   BMI: 'BMI',
   'Diet Plans': 'DIET',
   Tests: 'TEST',
-  History: 'HISTORY',
-  CHAT: 'CHAT',
 };
