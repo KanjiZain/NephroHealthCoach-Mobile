@@ -15,12 +15,12 @@ const GeminiChat = () => {
   const [loading, setLoading] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showStopIcon, setShowStopIcon] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(''); // New state for error messages
-
+  const [errorMessage, setErrorMessage] = useState('');
   const API_KEY = '';
 
-  const Gprompt =
-    "You are a chatbot that only answers questions related to medical, biomedical, bio, science, healthcare, pharmacology, genetics, biology, anatomy, physiology, epidemiology, virology, microbiology, neuroscience, chemistry, biochemistry, or any other scientific or medical topics. If the next text is not about medical, biomedical, bio, science, or any related topics, politely say: 'I can only answer medical-related questions.'";
+const Gprompt =
+  "You are a chatbot that specializes in answering questions related to medical, biomedical, bio, science, healthcare, pharmacology, genetics, biology, anatomy, physiology, epidemiology, virology, microbiology, neuroscience, chemistry, biochemistry, or any other scientific or medical topics. If the input is a greeting, introduction, or casual conversation (e.g., 'Hi', 'Hello', 'How are you?', or 'Tell me about yourself'), respond politely and appropriately. For any other input that is unrelated to science or medical topics, politely say: 'I can only answer medical-related questions.'";
+
 
   useEffect(() => {
     const startChat = async () => {
@@ -35,45 +35,39 @@ const GeminiChat = () => {
     startChat();
   }, []);
 
-  const sendMessage = async () => {
-    if (!userInput.trim()) {
-      setErrorMessage('Please enter a message before sending.'); // Set error message if input is empty
-      return;
-    }
+const sendMessage = async () => {
+  if (!userInput.trim()) {
+    setErrorMessage('Please enter a message before sending.');
+    return;
+  }
 
-    setLoading(true);
-    setUserInput('');
-    setErrorMessage(''); // Clear previous error messages
+  setLoading(true);
+  setErrorMessage('');
 
-    const userMessage = {text: userInput, user: true};
+  const userMessage = {text: userInput, user: true};
+  setMessages(prevMessages => [userMessage, ...prevMessages] as any);
 
-    // Prepend the new message instead of appending it
-    setMessages([userMessage, ...messages] as any);
+  setUserInput('');
 
-    const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({model: 'gemini-pro'});
-    const prompt = Gprompt + userMessage.text;
-    console.log(userMessage.text);
+  const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(API_KEY);
+  const model = genAI.getGenerativeModel({model: 'gemini-pro'});
+  const prompt = Gprompt + userMessage.text;
+  console.log(userMessage.text);
 
-    try {
-      const result = await model.generateContent(prompt);
-      const response = result.response;
-      const text = response.text();
+  try {
+    const result = await model.generateContent(prompt);
+    const response = result.response;
+    const text = response.text();
 
-      // Prepend the AI's response as well
-      setMessages([{text, user: false}, ...messages] as any);
-    } catch (error) {
-      setUserInput('');
-      setMessages([]);
+    setMessages(prevMessages => [{text, user: false}, ...prevMessages] as any);
+  } catch (error) {
+    setErrorMessage(
+      'There was an error processing your request. Please try again later.',
+    );
+  }
 
-      setErrorMessage(
-        'There was an error processing your request. Please try again later.',
-      ); // Set error message on failure
-    }
-
-    setLoading(false);
-    setUserInput('');
-  };
+  setLoading(false);
+};
 
   const ClearMessage = () => {
     setMessages([]);
@@ -185,9 +179,8 @@ const styles = StyleSheet.create({
     height: 50,
     color: 'white',
   },
-  // New error box styles
   errorBox: {
-    backgroundColor: '#FFCDD2', // Light red color
+    backgroundColor: '#FFCDD2',
     padding: 10,
     margin: 10,
     borderRadius: 5,
@@ -202,3 +195,6 @@ const styles = StyleSheet.create({
 });
 
 export default GeminiChat;
+
+
+//AIzaSyCm7ndYDYKYUW8pWCh3tTT_WoHEoPw3ps0
