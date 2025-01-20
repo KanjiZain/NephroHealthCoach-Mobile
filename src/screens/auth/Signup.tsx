@@ -105,7 +105,7 @@ export default function Signup({navigation}: GenericNavigationType) {
       <SafeAreaView style={styles.mainContainer}>
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           <CenterView>
-            <FullView containerStyle={{gap: normalizeHeight(10)}}>
+            <FullView containerStyle={{gap: normalizeHeight(16)}}>
               <Header title="Register To Join Us" />
               <FullView containerStyle={{padding: 0}}>
                 <InputView>
@@ -122,7 +122,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faUser}
-                        color={error ? Colors.red : Colors.white}
+                        color={error ? Colors.red : Colors.cosmos_blue}
                         size={normalizeFont(18)}
                       />
                     )}
@@ -142,7 +142,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faUser}
-                        color={error ? Colors.red : Colors.white}
+                        color={error ? Colors.red : Colors.cosmos_blue}
                         size={normalizeFont(18)}
                       />
                     )}
@@ -163,7 +163,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faEnvelope}
-                        color={error ? Colors.red : Colors.white}
+                        color={error ? Colors.red : Colors.cosmos_blue}
                         size={normalizeFont(18)}
                       />
                     )}
@@ -183,7 +183,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faLock}
-                        color={error ? Colors.red : Colors.white}
+                        color={error ? Colors.red : Colors.cosmos_blue}
                         size={normalizeFont(18)}
                       />
                     )}
@@ -203,7 +203,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faPhone}
-                        color={error ? Colors.red : Colors.white}
+                        color={error ? Colors.red : Colors.cosmos_blue}
                         size={normalizeFont(18)}
                       />
                     )}

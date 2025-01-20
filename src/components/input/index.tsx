@@ -174,7 +174,7 @@ const CustomInput = ({
           }
           value={value}
           placeholderTextColor={
-            placeholderTextColor || Colors.light_weight_grey
+            placeholderTextColor || Colors.cosmos_blue
           }
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -214,10 +214,10 @@ const styles = StyleSheet.create({
     minHeight: normalizeHeight(60),
   },
   containerFocused: {
-    borderColor: Colors.white,
+    borderColor: Colors.cosmos_blue,
   },
   containerUnfocused: {
-    borderColor: Colors.white,
+    borderColor: Colors.cosmos_blue,
   },
   containerError: {
     borderColor: Colors.red,
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     fontFamily: FontType.Outfit.Regular,
     flex: 1,
     fontSize: normalizeFont(17),
-    color: Colors.white,
+    color: Colors.cosmos_blue,
     padding: normalizeWithScale(10),
   },
   inputWithSearch: {
@@ -242,6 +242,7 @@ const styles = StyleSheet.create({
     marginBottom: normalizeHeight(2),
     marginLeft: normalizeWidth(2),
     textAlign: 'center',
+    borderColor: Colors.cosmos_blue,
   },
   errorText: {
     color: Colors.red,

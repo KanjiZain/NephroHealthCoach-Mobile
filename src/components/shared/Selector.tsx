@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     height: normalizeHeight(58),
-    borderColor: Colors.white,
+    borderColor: Colors.cosmos_blue,
     borderWidth: normalizeWidth(1),
     borderRadius: normalizeWidth(10),
     paddingHorizontal: normalizeWidth(16),
@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
   placeholderStyle: {
     ...typography.h6,
     fontFamily: FontType.Outfit.Regular,
-    color: `${Colors.white}`,
+    color: `${Colors.cosmos_blue}`,
     opacity: 0.8,
   },
   selectedTextStyle: {
     ...typography.h6,
     fontFamily: FontType.Outfit.Medium,
-    color: Colors.white,
+    color: Colors.cosmos_blue,
   },
   iconStyle: {
     width: normalizeWithScale(20),
@@ -113,7 +113,7 @@ const Select = ({
           isFocus && {borderColor: Colors.black},
         ]}
         ref={dropdownRef}
-        iconColor={Colors.white}
+        iconColor={Colors.cosmos_blue}
         placeholderStyle={styles.placeholderStyle}
         selectedTextStyle={styles.selectedTextStyle}
         inputSearchStyle={styles.inputSearchStyle}

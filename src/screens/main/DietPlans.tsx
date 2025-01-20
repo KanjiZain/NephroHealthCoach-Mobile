@@ -56,7 +56,7 @@ export default function DietPlans() {
   });
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.cosmos_blue}}>
+    <View style={{flex: 1, backgroundColor: Colors.lightblue}}>
       <ImageBackground
         source={IMAGES.diet_bg}
         resizeMode="cover"
@@ -65,7 +65,7 @@ export default function DietPlans() {
         <View style={{flex: 1}}>
           {loading ? (
             <View>
-              <ActivityIndicator size={'large'} />
+              <ActivityIndicator size={'large'} color={Colors.cosmos_blue} />
             </View>
           ) : (
             <></>
@@ -90,7 +90,7 @@ export default function DietPlans() {
                     <FontAwesomeWrapper
                       icon={faTriangleExclamation}
                       size={normalizeWithScale(30)}
-                      color={Colors.white}
+                      color={Colors.cosmos_blue}
                     />
                     <Text>No Data Available</Text>
                     <Text>Please try again later.</Text>

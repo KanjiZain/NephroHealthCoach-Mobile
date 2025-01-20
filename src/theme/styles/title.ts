@@ -29,7 +29,7 @@ export const Title = {
   page_title: {
     fontSize: normalizeFont(20),
     fontFamily: FontType.Outfit.Bold,
-    color: Colors.white,
+    color: Colors.cosmos_blue,
     marginVertical: normalizeHeight(5),
   },
   page_title_subheading: {

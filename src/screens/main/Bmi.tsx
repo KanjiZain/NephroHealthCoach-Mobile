@@ -38,9 +38,9 @@ export default function Bmi() {
   const renderItem = ({item}: {item: IBmiState}) => <BmiItem {...item} />;
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.cosmos_blue}}>
+    <View style={{flex: 1, backgroundColor: Colors.lightblue}}>
       <Header title={'BMI'} />
-      <View>
+        <View style={{flex: 1}}>
         {loading ? (
           <View style={{marginTop: normalizeHeight(20)}}>
             <ActivityIndicator size={'large'} />

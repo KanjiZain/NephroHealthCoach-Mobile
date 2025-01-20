@@ -88,9 +88,9 @@ const styles = StyleSheet.create({
     borderRadius: normalizeWithScale(10),
     borderColor: Colors.white,
     borderWidth: normalizeWithScale(0.6),
-    marginTop: normalizeHeight(20),
+    marginTop: normalizeHeight(5),
     paddingHorizontal: normalizeWidth(20),
-    width: '95%',
+    width: '98%',
     display: 'flex',
     alignSelf: 'center',
   },
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     flex: 1,
-    marginBottom: normalizeHeight(20),
+    marginTop: normalizeHeight(10),
   },
   scrollViewContainer: {
     flexGrow: 1,
@@ -111,16 +111,9 @@ const styles = StyleSheet.create({
     width: '98%',
     height: '12%',
   },
-  item: {
-    flexDirection: 'row',
-    marginBottom: 8,
-  },
   label: {
     fontWeight: 'bold',
     marginRight: 8,
-  },
-  value: {
-    flex: 1,
   },
 });
 

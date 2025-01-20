@@ -91,7 +91,7 @@ const sendMessage = async () => {
   );
 
   return (
-    <View style={{flex: 1, backgroundColor: Colors.cosmos_blue}}>
+    <View style={{flex: 1, backgroundColor: Colors.lightblue}}>
       <Header title={'Chat'} />
       <TouchableOpacity onPress={ClearMessage} style={styles.clearButton}>
         <Text style={styles.clearButtonText}>Clear Chat</Text>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   clearButtonText: {
-    color: Colors.cosmos_blue,
+    color: Colors.black,
     fontSize: normalizeFont(14),
   },
   container: {flex: 1, backgroundColor: '#ffff', marginTop: 50},
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 5,
     maxWidth: '80%',
+    backgroundColor:Colors.grey
   },
   messageText: {
     fontSize: 16,

@@ -107,7 +107,7 @@ export default function Home({navigation}: GenericNavigationType) {
                     <FontAwesomeWrapper
                       icon={menu.icon}
                       size={28}
-                      color={Colors.buttonGradientDarkBlue}
+                      color={Colors.offWhiteLight}
                     />
                     <Text style={styles.text}>{menu.title}</Text>
                   </TouchableOpacity>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   signInTitleText: {
     ...typography.h3,
     fontSize: normalizeFont(22),
-    color: Colors.white,
+    color: Colors.cosmos_blue,
   },
   boxcontainer: {
     flexDirection: 'row',
@@ -153,11 +153,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: normalizeWithScale(10),
     borderRadius: normalizeWithScale(10),
-    backgroundColor: Colors.gray,
+    backgroundColor: Colors.cosmos_blue,
   },
   text: {
     fontSize: normalizeFont(14),
-    color: Colors.cosmos_blue,
+    color: Colors.offWhiteLight,
     marginTop: normalizeHeight(5),
     textAlign: 'center',
     fontFamily: FontType.Outfit.Regular,

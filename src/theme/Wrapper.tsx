@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    backgroundColor: Colors.cosmos_blue,
+    backgroundColor: Colors.lightblue,
   },
 });
 

@@ -54,12 +54,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: Colors.blue,
     padding: normalizeWithScale(16),
-    borderRadius: normalizeWithScale(5),
     height: normalizeHeight(65),
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    marginTop: normalizeHeight(20),
   },
   titleText: {
     ...typography.h3,

@@ -35,7 +35,6 @@ interface InputStyleProps {}
 const Header: React.FC<HeaderProps> = ({
   title,
   subtitle,
-  renderIcon,
   subTitleTextContainer,
   subTitleText,
   containerStyle,
@@ -49,20 +48,18 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <CenterView>
       <View style={[styles.headerView, containerStyle && containerStyle]}>
-        {!subtitle && <Spacer size={normalizeHeight(10)} />}
         <TouchableOpacity
           onPress={onBackButtonPressed}
           style={styles.backButton}>
           <FontAwesomeWrapper
             icon={faChevronCircleLeft}
-            color={Colors.white}
-            size={normalizeFont(18)}
+            color={Colors.cosmos_blue}
+            size={normalizeFont(20)}
           />
         </TouchableOpacity>
         <View style={styles.title_heading}>
           <Title title={title || ''} titlestyle={Theme.Title.page_title} />
 
-          {renderIcon && <View style={styles.icon}>{renderIcon()}</View>}
         </View>
         {subtitle && (
           <View
@@ -92,7 +89,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    marginTop: normalizeHeight(20),
+    marginTop: normalizeHeight(10),
   },
   title_heading: {
     flexDirection: 'row',
@@ -105,10 +102,7 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     left: 0,
-  },
-  icon: {
-    position: 'absolute',
-    right: 0,
+    top: normalizeHeight(10)
   },
 });
 

@@ -35,27 +35,29 @@ const BmiItem: React.FC<BmiItemProps> = ({
   ];
 
   return (
-    <View style={styles.MainContainer}>
-      <Image source={IMAGES.bmi} style={styles.image} />
-      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-        {data.map((item, index) => (
-          <GradientView
-            key={index}
-            endColor={Colors.cosmos_blue}
-            startColor={Colors.blue}
-            startAngleX={0}
-            startAngleY={0}
-            endAngleX={1}
-            endAngleY={0}
-            opacity={1}
-            style={styles.container}>
-            <Text style={styles.dataText}>
-              {item.label}: {item.value}
-            </Text>
-          </GradientView>
-        ))}
-      </ScrollView>
-    </View>
+    <>
+      <Image source={IMAGES.bmi} style={styles.image} resizeMode='stretch'/>
+      <View style={styles.MainContainer}>
+        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+          {data.map((item, index) => (
+            <GradientView
+              key={index}
+              endColor={Colors.cosmos_blue}
+              startColor={Colors.blue}
+              startAngleX={0}
+              startAngleY={0}
+              endAngleX={1}
+              endAngleY={0}
+              opacity={1}
+              style={styles.container}>
+              <Text style={styles.dataText}>
+                {item.label}: {item.value}
+              </Text>
+            </GradientView>
+          ))}
+        </ScrollView>
+      </View>
+    </>
   );
 };
 
@@ -86,7 +88,6 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: '12%',
   },
 });
 

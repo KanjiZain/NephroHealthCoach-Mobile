@@ -39,6 +39,7 @@ const Colors = {
   offWhite: '#CECECE',
   offWhiteLight: '#EAEAEA',
   buttonBlue: '#679acf',
+  lightblue: '#d6edfc',
 };
 
 export default Colors;

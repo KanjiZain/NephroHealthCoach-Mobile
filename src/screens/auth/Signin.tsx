@@ -113,7 +113,7 @@ export default function SignIn({navigation}: GenericNavigationType) {
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faEnvelope}
-                        color={error ? Colors.red : Colors.white}
+                        color={error ? Colors.red : Colors.cosmos_blue}
                         size={normalizeFont(18)}
                       />
                     )}
@@ -133,7 +133,7 @@ export default function SignIn({navigation}: GenericNavigationType) {
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faLock}
-                        color={error ? Colors.red : Colors.white}
+                        color={error ? Colors.red : Colors.cosmos_blue}
                         size={normalizeFont(18)}
                       />
                     )}
@@ -179,7 +179,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     width: '100%',
-    height: '100%',
   },
   imageContainer: {
     height: Platform.OS === 'ios' ? normalizeHeight(250) : normalizeHeight(350),
@@ -187,19 +186,20 @@ const styles = StyleSheet.create({
   },
   signInTitleText: {
     ...typography.h1,
+    color: Colors.cosmos_blue,
   },
 
   registerRedirectionText: {
     ...typography.body2,
     fontFamily: FontType.Outfit.Light,
-    color: Colors.white,
+    color: Colors.cosmos_blue,
     marginTop: normalizeHeight(5),
     marginBottom: normalizeHeight(5),
   },
   registerRedirectionTextBold: {
     ...typography.body2,
     fontFamily: FontType.Outfit.Bold,
-    color: Colors.white,
+    color: Colors.cosmos_blue,
     marginTop: normalizeHeight(5),
     marginBottom: normalizeHeight(5),
   },
