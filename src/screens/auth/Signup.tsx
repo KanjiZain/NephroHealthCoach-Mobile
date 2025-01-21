@@ -22,7 +22,7 @@ import CustomButton from '@/components/button';
 import {
   PASSWORD_REGEX,
   EMAIL_REGEX,
-  NUMERIC_REGEX,
+  PHONE_REGEX,
   NOT_EMPTY_Regex,
 } from '@/helpers';
 import _ from 'lodash';
@@ -42,7 +42,7 @@ import Header from '@/components/shared/Header';
 export default function Signup({navigation}: GenericNavigationType) {
   const [email, setEmail] = React.useState<string>('');
   const [Password, setPassword] = React.useState<string>('');
-  const [phoneNumber, setphoneNumber] = React.useState('');
+  const [phoneNumber, setphoneNumber] = React.useState('03');
   const [firstName, setFirstName] = React.useState<string>('');
   const [lastName, setLastName] = React.useState<string>('');
   const [gender, setGender] = React.useState<any>('');
@@ -58,7 +58,7 @@ export default function Signup({navigation}: GenericNavigationType) {
       _.isEmpty(firstName) ||
       !NOT_EMPTY_Regex.test(firstName);
     _.isEmpty(lastName) || !NOT_EMPTY_Regex.test(lastName);
-    !NUMERIC_REGEX.test(phoneNumber);
+    !PHONE_REGEX.test(phoneNumber);
     _.isEmpty(phoneNumber) || !NOT_EMPTY_Regex.test(phoneNumber);
 
     const genderEmpty = [gender].some(value => {
@@ -197,7 +197,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                     isNumeric={true}
                     onChange={setphoneNumber}
                     validate={{
-                      regex: NUMERIC_REGEX,
+                      regex: PHONE_REGEX,
                       errorMessage: 'Please Enter Valid Phone Number',
                     }}
                     renderInputLeft={error => (

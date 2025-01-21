@@ -15,7 +15,7 @@ const AppNavigator = () => {
   const {isAuthenticated} = useSelector((state: IStateReducers) => state.auth);
   return (
     <NavigationContainer>
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         <Stack.Navigator initialRouteName={NAVIGATION_ROUTES.AUTH.SPLASH}>
           <>
             {NAVIGATION_ROUTES_AUTH.map((screen, index) => (

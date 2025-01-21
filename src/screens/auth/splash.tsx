@@ -15,13 +15,13 @@ const SplashScreen = ({navigation}: GenericNavigationType) => {
   useFocusEffect(
     useCallback(() => {
       if (logoRef.current) {
-        logoRef.current.fadeIn(5000);
+        logoRef.current.fadeIn(6000);
       }
     }, []),
   );
 
   const handleAnimationEnd = () => {
-    setTimeout(() => navigation.navigate(NAVIGATION_ROUTES.AUTH.SIGNIN), 3000);
+    setTimeout(() => navigation.navigate(NAVIGATION_ROUTES.AUTH.SIGNIN), 4000);
   };
 
   return (

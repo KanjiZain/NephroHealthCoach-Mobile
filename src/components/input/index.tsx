@@ -173,9 +173,7 @@ const CustomInput = ({
             secureTextEntry === true ? !isPasswordVisible : secureTextEntry
           }
           value={value}
-          placeholderTextColor={
-            placeholderTextColor || Colors.cosmos_blue
-          }
+          placeholderTextColor={placeholderTextColor || Colors.cosmos_blue}
           onFocus={handleFocus}
           onBlur={handleBlur}
           multiline={multiline}
@@ -188,7 +186,7 @@ const CustomInput = ({
             onPress={togglePasswordVisibility}>
             <FontAwesomeWrapper
               icon={isPasswordVisible ? faEyeSlash : faEye}
-              color={Colors.white}
+              color={Colors.cosmos_blue}
               size={normalizeFont(23)}
             />
           </TouchableOpacity>

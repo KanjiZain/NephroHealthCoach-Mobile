@@ -40,10 +40,10 @@ export default function Bmi() {
   return (
     <View style={{flex: 1, backgroundColor: Colors.lightblue}}>
       <Header title={'BMI'} />
-        <View style={{flex: 1}}>
+      <View style={{flex: 1}}>
         {loading ? (
           <View style={{marginTop: normalizeHeight(20)}}>
-            <ActivityIndicator size={'large'} />
+            <ActivityIndicator size={'large'} color={Colors.cosmos_blue} />
           </View>
         ) : (
           <></>
@@ -58,7 +58,7 @@ export default function Bmi() {
             keyExtractor={(item: IBmiState) => item.timestamp}
             ListFooterComponent={() => {
               return loading && !bmi?.length ? (
-                <ActivityIndicator size={'large'} />
+                <ActivityIndicator size={'large'} color={Colors.cosmos_blue} />
               ) : (
                 <></>
               );

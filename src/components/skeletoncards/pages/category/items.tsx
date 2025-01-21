@@ -36,7 +36,7 @@ const BmiItem: React.FC<BmiItemProps> = ({
 
   return (
     <>
-      <Image source={IMAGES.bmi} style={styles.image} resizeMode='stretch'/>
+      <Image source={IMAGES.bmi} style={styles.image} resizeMode="stretch" />
       <View style={styles.MainContainer}>
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           {data.map((item, index) => (

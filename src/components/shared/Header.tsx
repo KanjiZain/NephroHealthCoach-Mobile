@@ -59,7 +59,6 @@ const Header: React.FC<HeaderProps> = ({
         </TouchableOpacity>
         <View style={styles.title_heading}>
           <Title title={title || ''} titlestyle={Theme.Title.page_title} />
-
         </View>
         {subtitle && (
           <View
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     left: 0,
-    top: normalizeHeight(10)
+    top: normalizeHeight(10),
   },
 });
 

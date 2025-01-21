@@ -16,11 +16,6 @@ export const authReducer = (state = initialState, action: ActionParams) => {
   switch (action.type) {
     case AuthActionsType.LOGOUT:
       return {
-        email: '',
-        firstName: '',
-        lastName: '',
-        phoneNumber: '',
-        gender: '',
         isLoading: false,
         isAuthenticated: false,
       };

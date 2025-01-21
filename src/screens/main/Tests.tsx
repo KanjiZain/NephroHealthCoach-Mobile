@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unstable-nested-components */
-import { IMAGES } from '@/assests/images';
+import {IMAGES} from '@/assests/images';
 import EmptylistView from '@/components/shared/EmptyListView';
 import Header from '@/components/shared/Header';
 import TestItem from '@/components/skeletoncards/pages/category/test';
@@ -10,7 +10,14 @@ import {normalizeWithScale} from '@/utils/styleUtil';
 import FontAwesomeWrapper from '@/wrapper/fontAwesomeWrapper';
 import {faTriangleExclamation} from '@fortawesome/free-solid-svg-icons';
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 export default function Tests() {
   const [loading, setLoading] = useState(true);
@@ -60,7 +67,7 @@ export default function Tests() {
         <View style={{flex: 1}}>
           {loading ? (
             <View>
-              <ActivityIndicator size={'large'} />
+              <ActivityIndicator size={'large'} color={Colors.cosmos_blue} />
             </View>
           ) : (
             <></>
@@ -74,7 +81,10 @@ export default function Tests() {
               renderItem={renderItem}
               ListFooterComponent={() => {
                 return loading && !testData?.length ? (
-                  <ActivityIndicator size={'large'} />
+                  <ActivityIndicator
+                    size={'large'}
+                    color={Colors.cosmos_blue}
+                  />
                 ) : (
                   <></>
                 );
@@ -99,7 +109,6 @@ export default function Tests() {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   backgroundImage: {

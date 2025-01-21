@@ -79,7 +79,10 @@ export default function DietPlans() {
               renderItem={renderItem}
               ListFooterComponent={() => {
                 return loading && !dietplan?.length ? (
-                  <ActivityIndicator size={'large'} />
+                  <ActivityIndicator
+                    size={'large'}
+                    color={Colors.cosmos_blue}
+                  />
                 ) : (
                   <></>
                 );
