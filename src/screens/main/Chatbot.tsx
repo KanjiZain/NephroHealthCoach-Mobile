@@ -51,7 +51,6 @@ const GeminiChat = () => {
     const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({model: 'gemini-pro'});
     const prompt = Gprompt + userMessage.text;
-    console.log(userMessage.text);
 
     try {
       const result = await model.generateContent(prompt);

@@ -32,7 +32,8 @@ import {useTypedDispatch} from '@/store';
 export default function SignIn({navigation}: GenericNavigationType) {
   const [email, setEmail] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
-  const {email: emailRedux, isLoading} = useSelector(
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const {email: emailRedux} = useSelector(
     (state: IStateReducers) => state.auth,
   );
   const dispatch = useTypedDispatch();
@@ -58,18 +59,22 @@ export default function SignIn({navigation}: GenericNavigationType) {
   );
 
   const handleSubmit = async () => {
+    setLoading(true);
     let loginData = {
       email,
       password,
     };
     let response = await dispatch(loginAction(loginData));
     if (response.success) {
+      setLoading(false);
+
       navigation.navigate(NAVIGATION_ROUTES.MAIN.HOME);
     } else {
       Toast.show({
         type: ToastTypes.ERROR,
         text1: response?.error,
       });
+      setLoading(false);
     }
   };
 
@@ -98,7 +103,7 @@ export default function SignIn({navigation}: GenericNavigationType) {
                 spanstyle={styles.signInTitleText}
                 spantext={'Your Account'}
               />
-              <FullView containerStyle={{padding: 0}}>
+              <FullView containerStyle={styles.fullview}>
                 <InputView>
                   <CustomInput
                     placeholder={'Enter Valid Email'}
@@ -147,7 +152,7 @@ export default function SignIn({navigation}: GenericNavigationType) {
                   buttonstyle={Theme.Button.login_button}
                   onPress={() => handleSubmit()}
                   fontstyle={Theme.Title.login_button_title}
-                  loading={isLoading}
+                  loading={loading}
                   disabled={!isFieldValid}
                 />
               </SafeAreaView>
@@ -218,5 +223,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginLeft: 5,
+  },
+  fullview: {
+    padding: 0,
   },
 });

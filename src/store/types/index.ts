@@ -4,13 +4,13 @@ export interface ActionParams {
 }
 
 export interface IAuthState {
+  _id: string;
   email: string;
   firstName: string;
   lastName: string;
   mobile: string;
   gender: string;
   password?: string;
-  isLoading: boolean;
   isAuthenticated: boolean;
   token?: string | null;
 }

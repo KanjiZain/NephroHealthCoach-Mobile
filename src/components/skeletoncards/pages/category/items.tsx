@@ -1,63 +1,104 @@
-import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
+import {useRoute, RouteProp} from '@react-navigation/native';
+import GradientView from '@/components/shared/GradientView';
+import Colors from '@/constants/color';
+import {IMAGES} from '@/assests/images';
 import {
   normalizeFont,
   normalizeHeight,
   normalizeWidth,
   normalizeWithScale,
 } from '@/utils/styleUtil';
-import GradientView from '@/components/shared/GradientView';
-import Colors from '@/constants/color';
 import {FontType, typography} from '@/utils/fontUtil';
-import {IMAGES} from '@/assests/images';
+import {requestBmi} from '@/services/bmiService';
+import Header from '@/components/shared/Header';
 
-interface BmiItemProps {
-  age: number;
-  weight: number;
-  height: number;
-  bmi: string;
-  gender?: string | null;
-}
+type BmiItemRouteParams = {
+  bmi_id: string;
+};
 
-const BmiItem: React.FC<BmiItemProps> = ({
-  age,
-  weight,
-  height,
-  bmi,
-  gender,
-}) => {
-  const data = [
-    {label: 'Age', value: age},
-    {label: 'Weight', value: `${weight} kg`},
-    {label: 'Height', value: `${height} cm`},
-    {label: 'BMI', value: bmi},
-    {label: 'Gender', value: gender || 'Not specified'},
-  ];
+const BmiItem: React.FC = () => {
+  const route = useRoute<RouteProp<{params: BmiItemRouteParams}, 'params'>>();
+  const {bmi_id} = route.params;
+
+  const [bmiData, setBmiData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetchBmiData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchBmiData = async () => {
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await requestBmi(bmi_id);
+      console.log(response);
+      setBmiData(response);
+    } catch (err: any) {
+      setError('Failed to fetch BMI data');
+    }
+
+    setLoading(false);
+  };
 
   return (
-    <>
+    <View style={{backgroundColor: Colors.lightblue, flex: 1}}>
+      <Header title={'BMI'} />
+
       <Image source={IMAGES.bmi} style={styles.image} resizeMode="stretch" />
       <View style={styles.MainContainer}>
-        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-          {data.map((item, index) => (
-            <GradientView
-              key={index}
-              endColor={Colors.cosmos_blue}
-              startColor={Colors.blue}
-              startAngleX={0}
-              startAngleY={0}
-              endAngleX={1}
-              endAngleY={0}
-              opacity={1}
-              style={styles.container}>
-              <Text style={styles.dataText}>
-                {item.label}: {item.value}
-              </Text>
-            </GradientView>
-          ))}
-        </ScrollView>
+        {loading ? (
+          <ActivityIndicator
+            size="large"
+            color={Colors.blue}
+            style={{marginTop: 20}}
+          />
+        ) : error ? (
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorText}>{error}</Text>
+          </View>
+        ) : (
+          <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            {bmiData && (
+              <>
+                {Object.keys(bmiData).map((key, index) => {
+                  if (key === '_id' || key === 'user-id') {
+                    return null;
+                  }
+                  return (
+                    <GradientView
+                      endColor={Colors.cosmos_blue}
+                      startColor={Colors.blue}
+                      startAngleX={0}
+                      startAngleY={0}
+                      endAngleX={1}
+                      endAngleY={0}
+                      opacity={1}
+                      style={styles.container}>
+                      <Text key={index} style={styles.dataText}>
+                        {key.toUpperCase()}: {bmiData[key] || 'NA'}
+                      </Text>
+                    </GradientView>
+                  );
+                })}
+              </>
+            )}
+          </ScrollView>
+        )}
       </View>
-    </>
+    </View>
   );
 };
 
@@ -88,6 +129,16 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
+  },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: normalizeFont(16),
+    fontWeight: 'bold',
   },
 });
 

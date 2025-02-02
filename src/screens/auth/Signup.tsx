@@ -35,8 +35,6 @@ import {useTypedDispatch} from '@/store';
 import {signUpAction} from '@/store/actions';
 import Toast from 'react-native-toast-message';
 import {ToastTypes} from '@/enums';
-import {useSelector} from 'react-redux';
-import {IStateReducers} from '@/store/types';
 import Header from '@/components/shared/Header';
 
 export default function Signup({navigation}: GenericNavigationType) {
@@ -47,7 +45,7 @@ export default function Signup({navigation}: GenericNavigationType) {
   const [lastName, setLastName] = React.useState<string>('');
   const [gender, setGender] = React.useState<any>('');
   const dispatch = useTypedDispatch();
-  const {isLoading} = useSelector((state: IStateReducers) => state.auth);
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const checkIsFieldValid = React.useCallback(() => {
     const isInputInvalid =
@@ -75,6 +73,8 @@ export default function Signup({navigation}: GenericNavigationType) {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
+
     let signUpData = {
       email,
       mobile: phoneNumber,
@@ -89,6 +89,8 @@ export default function Signup({navigation}: GenericNavigationType) {
         type: ToastTypes.SUCCESS,
         text1: response?.message,
       });
+      setLoading(false);
+
       setTimeout(() => {
         navigation.navigate(NAVIGATION_ROUTES.AUTH.SIGNIN);
       }, 2000);
@@ -97,6 +99,7 @@ export default function Signup({navigation}: GenericNavigationType) {
         type: ToastTypes.ERROR,
         text1: response?.error,
       });
+      setLoading(false);
     }
   };
 
@@ -230,7 +233,7 @@ export default function Signup({navigation}: GenericNavigationType) {
                   buttonstyle={Theme.Button.login_button}
                   onPress={() => handleSubmit()}
                   fontstyle={Theme.Title.login_button_title}
-                  loading={isLoading}
+                  loading={loading}
                   disabled={!isFieldValid}
                 />
                 <Spacer size={normalizeHeight(75)} />

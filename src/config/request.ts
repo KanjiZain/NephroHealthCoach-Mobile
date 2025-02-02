@@ -9,7 +9,7 @@ const REQ_TIMEOUT = 10 * 60 * 1000; // 10 minutes
 
 export const apiCache = new (LRUCache as any)({max: 500, ttl: 1000 * 60 * 5});
 const baseUrl =
-  'https://2a25-2406-d00-dddd-85c-b90a-3e3b-3822-33c3.ngrok-free.app/api/v1/';
+  'https://b0cb-2406-d00-dddd-4784-e4ce-6a13-fbe8-8147.ngrok-free.app/api/v1/';
 
 const instance = Axios.create({
   baseURL: baseUrl,
@@ -38,7 +38,6 @@ instance.interceptors.response.use(
       'Invalid or expired token',
       'Please authenticate',
     ];
-    console.log(error.response.data?.message);
 
     if (UnAuthorizeResponse.includes(error.response.data?.message)) {
       apiCache.clear();

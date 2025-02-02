@@ -1,12 +1,14 @@
+import BmiRecordsScreen from '@/components/ItemListing/BmiRecordsScreen';
+import DietRecordsScreen from '@/components/ItemListing/DietRecordsScreen';
+import TestRecordsScreen from '@/components/ItemListing/TestRecordsScreen';
+import DietItem from '@/components/skeletoncards/pages/category/DietPlan';
+import BmiItem from '@/components/skeletoncards/pages/category/items';
+import TestItem from '@/components/skeletoncards/pages/category/test';
 import SignIn from '@/screens/auth/Signin';
 import Signup from '@/screens/auth/Signup';
 import SplashScreen from '@/screens/auth/splash';
-import Bmi from '@/screens/main/Bmi';
 import Chatbot from '@/screens/main/Chatbot';
-import DietPlans from '@/screens/main/DietPlans';
-import History from '@/screens/main/History';
 import Home from '@/screens/main/Home';
-import Tests from '@/screens/main/Tests';
 
 export const NAVIGATION_ROUTES = {
   AUTH: {
@@ -21,6 +23,9 @@ export const NAVIGATION_ROUTES = {
     HISTORY: 'History',
     TEST: 'Test',
     CHAT: 'CHAT',
+    BmiListing: 'BmiListing',
+    TestListing: 'TestListing',
+    DietListing: 'DietListing',
   },
 };
 
@@ -50,27 +55,37 @@ export const NAVIGATION_ROUTES_MAIN = [
   },
   {
     name: 'Bmi',
-    component: Bmi,
+    component: BmiRecordsScreen,
     options: {headerShown: false},
   },
   {
     name: 'Diet',
-    component: DietPlans,
-    options: {headerShown: false},
-  },
-  {
-    name: 'History',
-    component: History,
+    component: DietRecordsScreen,
     options: {headerShown: false},
   },
   {
     name: 'Test',
-    component: Tests,
+    component: TestRecordsScreen,
     options: {headerShown: false},
   },
   {
     name: 'CHAT',
     component: Chatbot,
+    options: {headerShown: false},
+  },
+  {
+    name: 'BmiListing',
+    component: BmiItem,
+    options: {headerShown: false},
+  },
+  {
+    name: 'DietListing',
+    component: DietItem,
+    options: {headerShown: false},
+  },
+  {
+    name: 'TestListing',
+    component: TestItem,
     options: {headerShown: false},
   },
 ];

@@ -7,6 +7,7 @@ import Title from '@/components/title';
 import {HomeMenus, titleToRouteMap} from '@/constants';
 import Colors from '@/constants/color';
 import {NAVIGATION_ROUTES} from '@/constants/screenName';
+import {IStateReducers} from '@/store/types';
 import Wrapper from '@/theme/Wrapper';
 import {GenericNavigationType} from '@/types/navigation';
 import {FontType, typography} from '@/utils/fontUtil';
@@ -28,12 +29,15 @@ import {
   Image,
   Animated,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 
 const {width: SCREEN_WIDTH, height: SCREEN_HEIGHT} = Dimensions.get('window');
 const BUTTON_SIZE = normalizeWithScale(55);
 const PADDING = normalizeWithScale(10);
 
 export default function Home({navigation}: GenericNavigationType) {
+  const {_id} = useSelector((state: IStateReducers) => state.auth);
+
   const pan = useRef({
     x: SCREEN_WIDTH - BUTTON_SIZE - PADDING,
     y: SCREEN_HEIGHT - BUTTON_SIZE - PADDING,

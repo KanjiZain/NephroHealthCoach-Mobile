@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({
           <FontAwesomeWrapper
             icon={faChevronCircleLeft}
             color={Colors.cosmos_blue}
-            size={normalizeFont(20)}
+            size={normalizeFont(30)}
           />
         </TouchableOpacity>
         <View style={styles.title_heading}>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    left: 0,
+    left: 10,
     top: normalizeHeight(10),
   },
 });
