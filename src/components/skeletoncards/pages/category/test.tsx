@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Aligns content horizontally
     width: '100%',
     height: '100%',
+    flex:1
   },
 });
 

@@ -40,7 +40,7 @@ import Header from '@/components/shared/Header';
 export default function Signup({navigation}: GenericNavigationType) {
   const [email, setEmail] = React.useState<string>('');
   const [Password, setPassword] = React.useState<string>('');
-  const [phoneNumber, setphoneNumber] = React.useState('03');
+  const [phoneNumber, setphoneNumber] = React.useState('');
   const [firstName, setFirstName] = React.useState<string>('');
   const [lastName, setLastName] = React.useState<string>('');
   const [gender, setGender] = React.useState<any>('');
@@ -199,10 +199,6 @@ export default function Signup({navigation}: GenericNavigationType) {
                     value={phoneNumber}
                     isNumeric={true}
                     onChange={setphoneNumber}
-                    validate={{
-                      regex: PHONE_REGEX,
-                      errorMessage: 'Please Enter Valid Phone Number',
-                    }}
                     renderInputLeft={error => (
                       <FontAwesomeWrapper
                         icon={faPhone}

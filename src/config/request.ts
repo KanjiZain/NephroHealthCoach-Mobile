@@ -8,8 +8,7 @@ import {AuthActionsType} from '@/store/types/authType';
 const REQ_TIMEOUT = 10 * 60 * 1000; // 10 minutes
 
 export const apiCache = new (LRUCache as any)({max: 500, ttl: 1000 * 60 * 5});
-const baseUrl =
-  'https://b0cb-2406-d00-dddd-4784-e4ce-6a13-fbe8-8147.ngrok-free.app/api/v1/';
+const baseUrl = process.env.URL;
 
 const instance = Axios.create({
   baseURL: baseUrl,
