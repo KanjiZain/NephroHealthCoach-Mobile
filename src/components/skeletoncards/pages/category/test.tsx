@@ -44,7 +44,6 @@ const TestItem: React.FC = () => {
 
     try {
       const response = await requestTestRecordById(test_id);
-      console.log(response);
       setTestData(response);
     } catch (err: any) {
       setError('Failed to fetch Test data');

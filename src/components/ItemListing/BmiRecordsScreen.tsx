@@ -48,7 +48,6 @@ const BmiRecordsScreen: React.FC = ({navigation}: any) => {
   const fetchRecords = async () => {
     setLoading(true);
     const data = await requestAllBmi(_id);
-    console.log(data);
     setRecords(data);
     setLoading(false);
   };

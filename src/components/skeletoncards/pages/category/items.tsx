@@ -44,7 +44,6 @@ const BmiItem: React.FC = () => {
 
     try {
       const response = await requestBmi(bmi_id);
-      console.log(response);
       setBmiData(response);
     } catch (err: any) {
       setError('Failed to fetch BMI data');

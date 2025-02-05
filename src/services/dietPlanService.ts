@@ -24,9 +24,7 @@ export const requestAllDietPlans = async (_id: string) => {
 
 export const requestDietPlan = async (diet_plan_id: string) => {
   try {
-    console.log(diet_plan_id, 'diet_plan_id');
     const response = await axios.post('/user/getDietPlan', {diet_plan_id});
-    console.log(response);
     if (response.status === 200) {
       return response?.data?.data;
     } else {

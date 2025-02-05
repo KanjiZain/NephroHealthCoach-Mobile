@@ -44,7 +44,6 @@ const DietItem: React.FC = () => {
 
     try {
       const response = await requestDietPlan(diet_plan_id);
-      console.log(response);
       setDietData(response);
     } catch (err: any) {
       setError('Failed to fetch BMI data');

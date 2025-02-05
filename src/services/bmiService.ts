@@ -5,11 +5,9 @@ export const requestAllBmi = async (_id: string) => {
     if (!_id) {
       throw new Error('User ID not found');
     }
-    console.log(_id);
     const response = await axios.post('/user/getAllBmi', {
       user_id: _id,
     });
-    console.log(response);
 
     if (!response.data.data || response.data.data.length === 0) {
       throw new Error('No BMI records found');
